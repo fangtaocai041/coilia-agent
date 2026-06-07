@@ -1,9 +1,10 @@
 # 🐟 Coilia Agent — 刀鲚专研 (P₂)
 
-> **物种**: 刀鲚 (*Coilia nasus*) — 长江三鲜之一，溯河洄游鱼类
+> **物种**: 刀鲚 (*Coilia nasus*) — 长江三鲜之首，溯河洄游鱼类
 > **课题组**: 淡水渔业研究中心 刘凯研究员
-> **角色**: P₂ (Porpoise-parallel Specialist) — S-T-V-P 四体架构中的刀鲚专研层
-> **同级**: porpoise-agent (P₁, 长江江豚)
+> **角色**: P₂ — S-T-V-P₁-P₂ 五体架构中的刀鲚专研层
+> **同级**: porpoise-agent (P₁, 长江江豚) | **协调**: meso-cosmos-agent (T)
+> **版本**: v1.0.0 | **状态**: ✅ 运行中
 
 ## 研究背景
 
