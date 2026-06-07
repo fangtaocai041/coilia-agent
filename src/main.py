@@ -4,7 +4,10 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+# Add project root to path (parent of src/)
+_proj_root = str(Path(__file__).resolve().parent.parent)
+if _proj_root not in sys.path:
+    sys.path.insert(0, _proj_root)
 
 from src.agent.orchestrator import CoiliaOrchestrator
 
