@@ -12,6 +12,15 @@
 由于过度捕捞、水利工程阻断洄游通道、栖息地退化，刀鲚资源量急剧下降。
 2019年起农业农村部停止发放刀鲚专项捕捞许可证，2021年长江十年禁捕全面实施。
 
+## 🔗 生态系统
+
+| 项目 | 角色 | 说明 |
+|------|:--:|------|
+| [meso-cosmos-agent](https://github.com/fangtaocai041/meso-cosmos-agent) | **T** | 执行中枢 — 路由刀鲚查询到本 Agent |
+| [porpoise-agent](https://github.com/fangtaocai041/porpoise-agent) | **P₁** | 姊妹 Agent — 长江江豚专研 (同课题组) |
+| [fish-ecology-assistant](https://github.com/fangtaocai041/fish-ecology-assistant) | **S** | 知识供给 — 长江 443 种鱼类数据库 |
+| [cognitive-search-engine](https://github.com/fangtaocai041/cognitive-search-engine) | **V** | 验证引擎 — 文献搜索 + 三角验证 |
+
 ## 核心研究方向
 
 | 方向 | 说明 |
