@@ -45,6 +45,16 @@
 > **核心优势**: 长江刀鲚（三鲜之首）专属研究 Agent。与 P₁ 江豚 Agent 共享刘凯研究员课题组方向，形成长江水生生物"豚-鱼"双专研体系。
 > **待改进**: Skills 从 delegation stub 升级为可执行搜索逻辑。
 
+---
+
+## 📋 Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| **v1.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base · Meso-Cosmos integration |
+
+> **Latest**: v1.0 · 2026-06-08 · `25ee37e`
+
 ## 快速开始
 
 ```bash
