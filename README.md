@@ -51,7 +51,9 @@
 
 | Version | Date | Changes |
 |---------|------|---------|
-| **v1.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base · Meso-Cosmos integration |
+| **v1.2.0** | 2026-06-08 | ☯️ TAO (水·润下) + 🔥 WUXING + standalone DirectLoader search |
+| **v1.1.0** | 2026-06-08 | Standalone/integrated dual mode |
+| **v1.0.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base |
 
 > **Latest**: v1.0 · 2026-06-08 · `25ee37e`
 
