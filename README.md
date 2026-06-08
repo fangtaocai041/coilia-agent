@@ -1,18 +1,3 @@
-# ⚠️ DEPRECATED — 此仓库已归档 (保留作为历史记录)
-
-> **coilia-agent 已并入 [porpoise-agent](https://github.com/fangtaocai041/porpoise-agent) (v7.1.0)**
->
-> | 原模块 | 迁移至 |
-> |--------|--------|
-> | CoiliaOrchestrator (5阶段管线) | porpoise-agent/src/domain/coilia/orchestrator.py |
-> | CoiliaAdapter | porpoise-agent/src/domain/coilia/adapter.py |
-> | config/*.yaml | porpoise-agent/config/coilia/ |
-> | skills/ | porpoise-agent/src/domain/coilia/skills/ |
->
-> **本仓库只读保留，作为 v1.2.0 历史快照。所有新功能开发请移步 [porpoise-agent](https://github.com/fangtaocai041/porpoise-agent)。** 统一通过 scripts/project_loader.py → get_coilia() 调用。
-
----
-
 # 🐟 Coilia Agent — 刀鲚专研 (P₂)
 
 > **物种**: 刀鲚 (*Coilia nasus*) — 长江三鲜之首，溯河洄游鱼类
