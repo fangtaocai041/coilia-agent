@@ -34,12 +34,16 @@ class CoiliaAdapter:
             logger.warning(f"Coilia orchestrator not found at {orch_file}")
             return
         proj_str = str(base)
-        if proj_str in sys.path:
-            sys.path.remove(proj_str)
-        sys.path.insert(0, proj_str)
+        if proj_str not in sys.path:
+            sys.path.insert(0, proj_str)
         try:
-            import importlib.util
-            spec = importlib.util.spec_from_file_location("coilia.orchestrator", str(orch_file))
+            import importlib, importlib.util
+            # Clear cached 'src' to avoid cross-project conflict
+            for key in list(sys.modules.keys()):
+                if key == "src" or key.startswith("src."):
+                    del sys.modules[key]
+            spec = importlib.util.spec_from_file_location(
+                f"coilia.orchestrator.{id(self)}", str(orch_file))
             if spec and spec.loader:
                 mod = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(mod)
