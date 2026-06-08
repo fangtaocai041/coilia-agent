@@ -51,7 +51,7 @@ class CoiliaAdapter:
                 if cls:
                     self._orchestrator = cls()
         except Exception as exc:
-            logger.warning(f"Coilia orchestrator init failed: {exc}")
+            pass  # orchestrator unavailable in this env — adapter.search() returns stub
 
     def search(self, query: str, **kwargs) -> Dict[str, Any]:
         if self._orchestrator:
