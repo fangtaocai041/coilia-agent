@@ -72,14 +72,41 @@ class CoiliaOrchestrator:
             return self._integrated_response(question, phase)
 
     def _standalone_response(self, question: str, phase: ResearchPhase) -> dict:
-        """独立模式: 返回内置分析 + 搜索建议。"""
-        return {
+        """独立模式: 尝试 DirectLoader 搜索，失败则返回内置知识。
+
+        如果 cognitive-search-engine 在本地可用 → 实际搜索论文
+        否则 → 返回物种知识 + 搜索策略建议
+        """
+        # Try DirectLoader to cognitive-search-engine first
+        papers = []
+        try:
+            import importlib.util
+            base = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            engine_root = os.path.join(base, "cognitive-search-engine")
+            engine_file = os.path.join(engine_root, "src", "meso_agent.py")
+            if os.path.isfile(engine_file):
+                import sys
+                if engine_root not in sys.path:
+                    sys.path.insert(0, engine_root)
+                spec = importlib.util.spec_from_file_location("cogsearch.meso", engine_file)
+                if spec and spec.loader:
+                    mod = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(mod)
+                    agent = mod.create_agent(mode="http")
+                    result = agent.search("Coilia_nasus")
+                    papers = result.papers if hasattr(result, 'papers') else []
+        except Exception:
+            pass  # Fall back to knowledge-based response
+
+        response = {
             "agent": "Coilia Agent (P₂) — Standalone",
             "species": "Coilia nasus (刀鲚/长江刀鱼)",
             "phase": phase.value,
             "skill": self._phase_to_skill(phase),
             "mode": "standalone",
-            "status": "analyzed",
+            "status": "searched" if papers else "analyzed",
+            "papers_found": len(papers),
+            "papers": papers[:10] if papers else [],
             "knowledge": {
                 "profile": "溯河洄游鱼类, 长江三鲜之首, 资源量仅为历史峰值(1973年3750t)的1-3%",
                 "key_themes": [
@@ -94,8 +121,10 @@ class CoiliaOrchestrator:
                 ],
                 "research_group": "淡水渔业研究中心 刘凯研究员课题组",
             },
-            "note": "Standalone — provides species knowledge + search strategy. Install meso-cosmos-agent for integrated S-T-V-P execution.",
         }
+        if not papers:
+            response["note"] = "Standalone — species knowledge + search strategy. Install meso-cosmos-agent for integrated S-T-V-P execution."
+        return response
 
     def _integrated_response(self, question: str, phase: ResearchPhase) -> dict:
         """集成模式: DELEGATE 协议消息。"""
