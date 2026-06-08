@@ -55,7 +55,7 @@
 | **v1.1.0** | 2026-06-08 | Standalone/integrated dual mode |
 | **v1.0.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base |
 
-> **Latest**: v1.0 · 2026-06-08 · `25ee37e`
+> **Latest**: v1.2.0 · 2026-06-08 · `e1f18a5`
 
 ## 快速开始
 
