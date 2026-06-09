@@ -4,7 +4,7 @@
 
 <div align="center">
   <h1>🐟 Coilia Agent — 刀鲚专研 (P₂)</h1>
-  <p><strong>S-T-V-P₁-P₂ 五体架构 · P₂ 刀鲚专研层 · 淡水渔业研究中心 刘凯研究员课题组</strong></p>
+  <p><strong>三角闭环衍生项目 · P₂ 刀鲚专研 · 淡水渔业研究中心 刘凯研究员课题组</strong></p>
   <p>3 Skills · DirectLoader cognitive search · knowledge base · Panta Rhei philosophy</p>
   <p>🤝 Sister agent: <a href="https://github.com/fangtaocai041/porpoise-agent">porpoise-agent (P₁ 江豚)</a> · 🧠 Coordinator: <a href="https://github.com/fangtaocai041/eon-core">eon-core</a></p>
   <p>🌊 Panta Rhei · Everything Flows</p>
@@ -16,19 +16,19 @@
   <a href="#"><img src="https://img.shields.io/badge/DeepSeek-V3%2BR1-6366f1?style=flat-square" alt="DeepSeek"></a>
   <a href="#"><img src="https://img.shields.io/badge/skills-3-f59e0b?style=flat-square" alt="Skills:3"></a>
   <a href="#"><img src="https://img.shields.io/badge/knowledge_base-Coilia_nasus-8b5cf6?style=flat-square" alt="Knowledge"></a>
-  <a href="config/agent.yaml"><img src="https://img.shields.io/badge/agent-v1.2.0-ec4899?style=flat-square" alt="Agent:v1.2.0"></a>
+  <a href="config/agent.yaml"><img src="https://img.shields.io/badge/agent-v1.3.0-ec4899?style=flat-square" alt="Agent:v1.3.0"></a>
 </p>
 
 ## 🧠 Coordinated by eon-core
 
-> P₂ (V3) coordinated by [eon-core](https://github.com/fangtaocai041/eon-core) (10-layer unified kernel): **Chaos-enhanced routing** · **Samsara karma engine** · **DAG topology routing**.
+> P₂ (derived from Triangle Core) coordinated by [eon-core](https://github.com/fangtaocai041/eon-core) (Triangle Core coordinator): **Chaos-enhanced routing** · **Samsara karma engine** · **DAG topology routing**.
 
-## 🔺 S-T-V-P₁-P₂ Architecture Role: **Coilia Specialist (P₂ / V3)**
+## 🔺 Architecture Role: **Derived Project P₂ (Coilia Specialist)**
 
-> Part of the S-T-V-P₁-P₂ ecosystem, coordinated by [eon-core](https://github.com/fangtaocai041/eon-core).
-> `fish(S/V0) → cognitive(V/V1)` with `porpoise(P₁/V2)` + `coilia(P₂/V3)` as domain specialists.
+> Triangle Core: fish(Knowledge) + cognitive(Validation) + eon-core(Coordinator)
+> P₂ derived from Triangle Core, depends on triangle for species knowledge and literature search.
 > Coilia-specific: otolith microchemistry, migration ecology, resource assessment.
-> **Sister agent**: [porpoise-agent (P₁ / V2)](https://github.com/fangtaocai041/porpoise-agent) — 长江江豚专研, same research group.
+> **Sister agent**: [porpoise-agent (P₁)](https://github.com/fangtaocai041/porpoise-agent) — 江豚专研, same Derived level.
 
 ## 研究背景
 
@@ -36,14 +36,15 @@
 由于过度捕捞、水利工程阻断洄游通道、栖息地退化，刀鲚资源量急剧下降。
 2019年起农业农村部停止发放刀鲚专项捕捞许可证，2021年长江十年禁捕全面实施。
 
-## 🔗 Linked Projects (S-T-V-P₁-P₂ Ecosystem)
+## 🔗 Linked Projects (Triangle Core + Derived)
 
-| Project | Role | Stack | Description |
-|---------|:----:|-------|-------------|
-| **eon-core** | **Coordinator** | Python · 10-layer kernel | EventBus · Samsara karma · DAG routing · self-healing |
-| **porpoise-agent** | **P₁ / V2** (Porpoise) | Python · 18 skills | Sister agent — NBHF acoustics · habitat modeling (same lab) |
-| **fish-ecology-assistant** | **S / V0** (State) | Reasonix Skills · 21 MCP | Knowledge supply — Yangtze 443 species database |
-| **cognitive-search-engine** | **V / V1** (Validation) | Python · BDI+ReAct | Validation engine — literature search · authority scoring |
+| Project | Layer | Role | Description |
+|---------|:-----:|------|-------------|
+| **eon-core** | **Triangle** | Coordinator | EventBus · Samsara karma · DAG routing · self-healing |
+| **fish-ecology-assistant** | **Triangle V0** | Knowledge | Multi-basin fish DB (Yangtze 443 + Tumen + Suifen) |
+| **cognitive-search-engine** | **Triangle V1** | Validation | BDI+ReAct · literature search · authority scoring |
+| **porpoise-agent** | **Derived P₁** | Porpoise domain | NBHF acoustics · habitat modeling (sister project) |
+| **conflict-arbiter** | **Derived C** | Conflict arbitration | Multi-source protection-level arbitration |
 
 > **DirectLoader Protocol**: cognitive-search-engine loaded via `importlib` from `D:\Reasonix\cognitive-search-engine\src\` — engine updates auto-propagate, zero MCP overhead.
 > Full spec: workspace root `coordination.yaml`.
@@ -65,7 +66,7 @@
 |------|:--:|------|
 | 🐟 领域深度 | ⭐⭐⭐⭐⭐ | 刀鲚完整知识库：生物学、洄游特性、耳石微化学、资源评估 |
 | 🔬 研究方法 | ⭐⭐⭐⭐☆ | 3 个核心 Skill 定义完整 (文献检索/洄游分析/资源评估) |
-| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | P₂/V3 角色，与 P₁(江豚) 平级，统一由 eon-core 调度 |
+| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | 衍生项目 P₂，与 P₁(江豚) 同级衍生，统一由 eon-core 调度 |
 | 📡 可执行性 | ⭐⭐⭐☆☆ | 当前为 delegation stub 架构，实际搜索通过 DirectLoader 调用 cognitive-search-engine |
 | 🚀 可扩展性 | ⭐⭐⭐⭐⭐ | 与 porpoise-agent 共享 P 层模板，3 步复制出新物种 Agent |
 
@@ -110,8 +111,7 @@ coilia-agent/
 │
 ├── config/
 │   ├── agent.yaml            ← Agent behavior config
-│   ├── tao.yaml              ← ☯️ TAO (水·润下)
-│   ├── wuxing.yaml           ← 🔥 WuXing dynamics
+│   ├── component_registry.yaml
 │   └── component_registry.yaml
 │
 ├── src/
@@ -141,7 +141,7 @@ coilia-agent/
 | **v1.1.0** | 2026-06-08 | Standalone/integrated dual mode |
 | **v1.0.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base |
 
-> **Latest**: v1.2.0 · 2026-06-08
+> **Latest**: v1.3.0 · 2026-06-09
 
 ## 🗺️ 演进方向 (Personalized Roadmap)
 
@@ -159,6 +159,7 @@ coilia-agent/
 
 | Version | Date | Theme | What Changed |
 |:--------|:-----|:------|:-------------|
+| **v1.4.0** | 2026-06-20 | 🔗 KB-First 搜索集成 + 🧹 prompts/__init__.py 补全 |
 | **v1.3.0** | 2026-06-09 | Cross-Project Sync | + Badge row, + S-T-V role (P₂/V3), + eon-core coordination, + Skills table, + Search Infrastructure, + Project Structure, + README Changelog |
 | **v1.2.0** | 2026-06-08 | ☯️ TAO + WUXING | + TAO (水·润下) + WUXING dynamics + standalone DirectLoader search |
 | **v1.1.0** | 2026-06-08 | Dual Mode | Standalone/integrated dual mode |

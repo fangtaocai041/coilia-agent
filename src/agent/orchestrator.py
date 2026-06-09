@@ -25,11 +25,8 @@ from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
-# ── 共享类型 (与 eon-core/src/orchestrator_base.py 同步) ──
-# eon-core 目录名含连字符无法直接 import; 本地定义与共享基类保持同步
-_HAS_SHARED_BASE = False  # eon-core 通过 project_loader 间接集成
-VerificationStatus = None
-ContradictionType = None
+# ── 共享类型 — from workspace-level shared_types (v1.5 de-dup)
+from scripts.shared_types import VerificationStatus, ContradictionType
 BasePhaseResult = object
 BasePipelineResult = object
 
