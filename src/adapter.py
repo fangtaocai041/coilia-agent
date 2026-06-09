@@ -52,16 +52,18 @@ class CoiliaAdapter(IProjectAdapter):
             for key in list(sys.modules.keys()):
                 if key == "src" or key.startswith("src."):
                     del sys.modules[key]
+            module_name = f"coilia.orchestrator.{id(self)}"
             spec = importlib.util.spec_from_file_location(
-                f"coilia.orchestrator.{id(self)}", str(orch_file))
+                module_name, str(orch_file))
             if spec and spec.loader:
                 mod = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = mod  # 必须注册，否则 @dataclass 崩溃
                 spec.loader.exec_module(mod)
                 cls = getattr(mod, "CoiliaOrchestrator", None)
                 if cls:
                     self._orchestrator = cls()
         except Exception as exc:
-            pass  # orchestrator unavailable in this env — adapter.search() returns stub
+            logger.warning(f"Coilia orchestrator init failed: {exc}")
 
     def search(self, query: str, **kwargs) -> Dict[str, Any]:
         if self._orchestrator:
