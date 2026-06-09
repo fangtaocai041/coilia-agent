@@ -6,7 +6,7 @@
 
 agent:
   name: "Coilia Agent"
-  version: "1.0.0"
+  version: "1.2.0"
   description: "刀鲚专研 Agent — 洄游生态、耳石微化学、资源评估、群体遗传"
   species: "Coilia nasus (刀鲚/长江刀鱼)"
   research_group: "淡水渔业研究中心 刘凯研究员课题组"
@@ -25,20 +25,21 @@ agent:
       - "凤鲚 (Coilia mystus)"
 
   skills:
-    core:
+    external:
       - name: "search-literature"
-        description: "中英双语文献检索 — PubMed/CNKI/万方/Google Scholar"
+        description: "中英双语文献检索 — 通过 cognitive-search-engine DirectLoader"
+        path: "src/skills/search-literature/SKILL.md"
       - name: "analyze-migration"
         description: "耳石微化学数据解析 — Sr/Ca比、LA-ICP-MS数据处理"
+        path: "src/skills/analyze-migration/SKILL.md"
       - name: "assess-stock"
         description: "资源评估 — CPUE标准化、种群动态模型、MSY估算"
-    domain:
-      - name: "analyze-genetics"
-        description: "群体遗传学 — 微卫星/线粒体/SNP分析"
-      - name: "analyze-diet"
-        description: "食性分析 — 胃含物+稳定同位素+DNA宏条形码"
-      - name: "assess-habitat"
-        description: "产卵场/栖息地评估"
+        path: "src/skills/assess-stock/SKILL.md"
+    inline_phases:
+      - name: "genetics-analysis"
+        description: "群体遗传学 — 微卫星/线粒体/SNP分析 (内联管线阶段)"
+      - name: "report-generation"
+        description: "综合报告生成 — 合并所有阶段发现 (内联管线阶段)"
 
   pipeline:
     phases:
@@ -49,9 +50,19 @@ agent:
       - "报告生成 (Report Generation)"
 
 architecture:
-  # 借鉴 porpoise-agent 的 T/P 双层架构
-  # T 层协调由 meso-cosmos-agent 负责
+  # S-T-V-P₁-P₂ 五体架构: eon-core (10层内核) 统一协调
   # P 层专研由本 Agent 负责
   layer: "P (Specialist)"
-  sister_agent: "porpoise-agent (P₁, 长江江豚)"
-  coordinator: "meso-cosmos-agent (T)"
+  sister_agent: "porpoise-agent (P₁/V2, 长江江豚)"
+  coordinator: "eon-core"
+
+# ═══════════════════════════════════════════════════════════
+# Shared — 跨项目共享配置 (与其他 agent.yaml 对齐)
+# ═══════════════════════════════════════════════════════════
+shared:
+  version: "1.2.0"
+  philosophy: "Panta Rhei + Systems Thinking"
+  architecture: "S-T-V-P₁-P₂ (三角派生 P₂/V3)"
+  rule_count: 18
+  coordination_file: "coordination.yaml"
+  preflight: "read config/agent.yaml before all Skills"

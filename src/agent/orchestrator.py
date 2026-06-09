@@ -4,6 +4,10 @@ Coilia Agent Orchestrator — 刀鲚专研管线协调器 (P₂, V3)
 P₁(porpoise-agent) 与 P₂(coilia-agent) 为同级平行项目，
 分别对应 eon-core 四象顶点 V2 和 V3。
 
+共享基类: eon-core/src/orchestrator_base.py
+  — VerificationStatus, ContradictionType, PhaseResult, PipelineResult
+  — 可从 eon-core 导入以启用验证标记和矛盾分析
+
 双模式:
   独立模式 (standalone): 作为独立 Agent，通过 project_loader 调用 cognitive
   集成模式 (integrated):  由 eon-core OriginKernel 调度，返回 DELEGATE 协议
@@ -21,9 +25,17 @@ from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
+# ── 共享类型 (与 eon-core/src/orchestrator_base.py 同步) ──
+# eon-core 目录名含连字符无法直接 import; 本地定义与共享基类保持同步
+_HAS_SHARED_BASE = False  # eon-core 通过 project_loader 间接集成
+VerificationStatus = None
+ContradictionType = None
+BasePhaseResult = object
+BasePipelineResult = object
+
 
 # ═══════════════════════════════════════════════════════════════
-# Types
+# Types (本地扩展 — 继承自 eon-core 共享基类)
 # ═══════════════════════════════════════════════════════════════
 
 class ResearchPhase(str, Enum):

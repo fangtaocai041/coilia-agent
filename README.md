@@ -1,10 +1,34 @@
-# 🐟 Coilia Agent — 刀鲚专研 (P₂)
+<p align="center">
+  🇨🇳 <a href="README.zh.md">中文</a>
+</p>
 
-> **物种**: 刀鲚 (*Coilia nasus*) — 长江三鲜之首，溯河洄游鱼类
-> **课题组**: 淡水渔业研究中心 刘凯研究员
-> **角色**: P₂ — S-T-V-P₁-P₂ 五体架构中的刀鲚专研层
-> **同级**: porpoise-agent (P₁, 长江江豚) | **协调**: meso-cosmos-agent (T)
-> **版本**: v1.2.0 | **状态**: ✅ 运行中
+<div align="center">
+  <h1>🐟 Coilia Agent — 刀鲚专研 (P₂)</h1>
+  <p><strong>S-T-V-P₁-P₂ 五体架构 · P₂ 刀鲚专研层 · 淡水渔业研究中心 刘凯研究员课题组</strong></p>
+  <p>3 Skills · DirectLoader cognitive search · knowledge base · Panta Rhei philosophy</p>
+  <p>🤝 Sister agent: <a href="https://github.com/fangtaocai041/porpoise-agent">porpoise-agent (P₁ 江豚)</a> · 🧠 Coordinator: <a href="https://github.com/fangtaocai041/eon-core">eon-core</a></p>
+  <p>🌊 Panta Rhei · Everything Flows</p>
+</div>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python" alt="Python"></a>
+  <a href="#"><img src="https://img.shields.io/badge/DeepSeek-V3%2BR1-6366f1?style=flat-square" alt="DeepSeek"></a>
+  <a href="#"><img src="https://img.shields.io/badge/skills-3-f59e0b?style=flat-square" alt="Skills:3"></a>
+  <a href="#"><img src="https://img.shields.io/badge/knowledge_base-Coilia_nasus-8b5cf6?style=flat-square" alt="Knowledge"></a>
+  <a href="config/agent.yaml"><img src="https://img.shields.io/badge/agent-v1.2.0-ec4899?style=flat-square" alt="Agent:v1.2.0"></a>
+</p>
+
+## 🧠 Coordinated by eon-core
+
+> P₂ (V3) coordinated by [eon-core](https://github.com/fangtaocai041/eon-core) (10-layer unified kernel): **Chaos-enhanced routing** · **Samsara karma engine** · **DAG topology routing**.
+
+## 🔺 S-T-V-P₁-P₂ Architecture Role: **Coilia Specialist (P₂ / V3)**
+
+> Part of the S-T-V-P₁-P₂ ecosystem, coordinated by [eon-core](https://github.com/fangtaocai041/eon-core).
+> `fish(S/V0) → cognitive(V/V1)` with `porpoise(P₁/V2)` + `coilia(P₂/V3)` as domain specialists.
+> Coilia-specific: otolith microchemistry, migration ecology, resource assessment.
+> **Sister agent**: [porpoise-agent (P₁ / V2)](https://github.com/fangtaocai041/porpoise-agent) — 长江江豚专研, same research group.
 
 ## 研究背景
 
@@ -12,14 +36,17 @@
 由于过度捕捞、水利工程阻断洄游通道、栖息地退化，刀鲚资源量急剧下降。
 2019年起农业农村部停止发放刀鲚专项捕捞许可证，2021年长江十年禁捕全面实施。
 
-## 🔗 生态系统
+## 🔗 Linked Projects (S-T-V-P₁-P₂ Ecosystem)
 
-| 项目 | 角色 | 说明 |
-|------|:--:|------|
-| [meso-cosmos-agent](https://github.com/fangtaocai041/meso-cosmos-agent) | **T** | 执行中枢 — 路由刀鲚查询到本 Agent |
-| [porpoise-agent](https://github.com/fangtaocai041/porpoise-agent) | **P₁** | 姊妹 Agent — 长江江豚专研 (同课题组) |
-| [fish-ecology-assistant](https://github.com/fangtaocai041/fish-ecology-assistant) | **S** | 知识供给 — 长江 443 种鱼类数据库 |
-| [cognitive-search-engine](https://github.com/fangtaocai041/cognitive-search-engine) | **V** | 验证引擎 — 文献搜索 + 三角验证 |
+| Project | Role | Stack | Description |
+|---------|:----:|-------|-------------|
+| **eon-core** | **Coordinator** | Python · 10-layer kernel | EventBus · Samsara karma · DAG routing · self-healing |
+| **porpoise-agent** | **P₁ / V2** (Porpoise) | Python · 18 skills | Sister agent — NBHF acoustics · habitat modeling (same lab) |
+| **fish-ecology-assistant** | **S / V0** (State) | Reasonix Skills · 21 MCP | Knowledge supply — Yangtze 443 species database |
+| **cognitive-search-engine** | **V / V1** (Validation) | Python · BDI+ReAct | Validation engine — literature search · authority scoring |
+
+> **DirectLoader Protocol**: cognitive-search-engine loaded via `importlib` from `D:\Reasonix\cognitive-search-engine\src\` — engine updates auto-propagate, zero MCP overhead.
+> Full spec: workspace root `coordination.yaml`.
 
 ## 核心研究方向
 
@@ -38,12 +65,71 @@
 |------|:--:|------|
 | 🐟 领域深度 | ⭐⭐⭐⭐⭐ | 刀鲚完整知识库：生物学、洄游特性、耳石微化学、资源评估 |
 | 🔬 研究方法 | ⭐⭐⭐⭐☆ | 3 个核心 Skill 定义完整 (文献检索/洄游分析/资源评估) |
-| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | P₂ 角色，与 P₁(江豚) 平级，统一由 meso-cosmos (T) 调度 |
-| 📡 可执行性 | ⭐⭐⭐☆☆ | 当前为 delegation stub 架构，实际搜索需通过 Reasonix Skills 执行 |
+| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | P₂/V3 角色，与 P₁(江豚) 平级，统一由 eon-core 调度 |
+| 📡 可执行性 | ⭐⭐⭐☆☆ | 当前为 delegation stub 架构，实际搜索通过 DirectLoader 调用 cognitive-search-engine |
 | 🚀 可扩展性 | ⭐⭐⭐⭐⭐ | 与 porpoise-agent 共享 P 层模板，3 步复制出新物种 Agent |
 
 > **核心优势**: 长江刀鲚（三鲜之首）专属研究 Agent。与 P₁ 江豚 Agent 共享刘凯研究员课题组方向，形成长江水生生物"豚-鱼"双专研体系。
 > **待改进**: Skills 从 delegation stub 升级为可执行搜索逻辑。
+
+---
+
+## 🧠 Skills
+
+| Skill | Role | Description |
+|:------|:-----|:------------|
+| 🔍 `search-literature` | 📚 Literature Review | Bilingual EN/CN search via cognitive-search-engine DirectLoader |
+| 🏷️ `analyze-migration` | 🌊 Migration Analysis | Otolith Sr/Ca profiling + migration route reconstruction |
+| 📊 `assess-stock` | 📊 Stock Assessment | CPUE analysis + population dynamics modeling |
+
+---
+
+## 📡 Search Infrastructure
+
+**DirectLoader Protocol** — searches routed to cognitive-search-engine via `importlib`:
+
+```
+CoiliaAgent.search(query, genus="Coilia", species="nasus")
+  └─ CognitiveSearchAdapter.search("Coilia", "nasus", full_pipeline=False)
+       ├─ variant_generator.generate()    → OCR variants (Coilia→Coilia, etc.)
+       ├─ build_search_queries()          → exact + variants + Chinese names
+       └─ ParallelSearch.search_all()     → PubMed × Crossref × OpenAlex
+```
+
+> Engine path: `D:\Reasonix\cognitive-search-engine\src\` · Adapter: `src/adapter.py`
+
+---
+
+## 📁 Project Structure
+
+```
+coilia-agent/
+├── README.md                 ← English
+├── README.zh.md              ← 中文
+├── coilia.bat                ← CLI launcher
+│
+├── config/
+│   ├── agent.yaml            ← Agent behavior config
+│   ├── tao.yaml              ← ☯️ TAO (水·润下)
+│   ├── wuxing.yaml           ← 🔥 WuXing dynamics
+│   └── component_registry.yaml
+│
+├── src/
+│   ├── main.py               ← CLI entry point
+│   ├── adapter.py             ← CognitiveSearchAdapter (DirectLoader)
+│   ├── agent/
+│   │   └── orchestrator.py   ← Query routing + pipeline
+│   ├── prompts/
+│   │   └── system_prompts.py ← Panta Rhei philosophy prompts
+│   └── skills/
+│       ├── search-literature/    ← Bilingual literature search
+│       ├── analyze-migration/    ← Otolith microchemistry analysis
+│       └── assess-stock/         ← Stock assessment modeling
+│
+└── data/
+    └── knowledge_base/
+        └── species/           ← Coilia nasus knowledge entries
+```
 
 ---
 
@@ -67,7 +153,26 @@
 | 4 | **种群连通性分析** | 不同水域 Coilia 是否同一群体 | 耳石元素指纹 + 遗传数据 → 聚类判别 | 🟡 P1 |
 | 5 | **捕捞压力评估** | 产量数据分散 | CPUE 时间序列 → 资源状况评估 | 🟢 P2 |
 
-## 快速开始
+---
+
+## 📋 README Changelog
+
+| Version | Date | Theme | What Changed |
+|:--------|:-----|:------|:-------------|
+| **v1.3.0** | 2026-06-09 | Cross-Project Sync | + Badge row, + S-T-V role (P₂/V3), + eon-core coordination, + Skills table, + Search Infrastructure, + Project Structure, + README Changelog |
+| **v1.2.0** | 2026-06-08 | ☯️ TAO + WUXING | + TAO (水·润下) + WUXING dynamics + standalone DirectLoader search |
+| **v1.1.0** | 2026-06-08 | Dual Mode | Standalone/integrated dual mode |
+| **v1.0.0** | 2026-06-08 | Initial | P₂ 刀鲚专研 · 3 Skills · knowledge base |
+
+---
+
+## 📜 License
+
+MIT License © 2026 fangtaocai041
+
+---
+
+## ⚡ Quick Start
 
 ```bash
 cd coilia-agent

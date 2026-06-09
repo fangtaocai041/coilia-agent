@@ -1,5 +1,9 @@
 """CoiliaAdapter — coilia-agent (V3 / P₂ 同级项目).
 
+【核心专精】assess_species(species: str, context: str) → SpeciesAssessment
+    耳石微化学 + 洄游生态 + 资源评估 (领域专精知识)
+    → 通路 P3(←cognitive)
+
 Wraps CoiliaOrchestrator for cross-project consumption.
 Provides otolith microchemistry + resource assessment as standard interface.
 
@@ -17,8 +21,14 @@ from typing import Any, Dict
 
 logger = logging.getLogger(__name__)
 
+# Import shared adapter protocol (workspace root on sys.path)
+try:
+    from scripts.adapter_protocol import IProjectAdapter
+except ImportError:
+    IProjectAdapter = object  # fallback for standalone usage
 
-class CoiliaAdapter:
+
+class CoiliaAdapter(IProjectAdapter):
     """Adapter for coilia-agent (V3 — 刀鲚领域, P₂ 同级项目)."""
 
     project_name = "coilia-agent"
