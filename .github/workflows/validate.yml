@@ -1,0 +1,16 @@
+name: Validate
+on: [push, pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pyyaml
+      - run: python -c "import ast; ast.parse(open('src/agent/orchestrator.py').read()); print('✅ orchestrator.py syntax OK')"
+      - run: python -c "import yaml; yaml.safe_load(open('config/agent.yaml')); print('✅ agent.yaml valid')"
+      - run: |
+          skills=$(ls src/skills/*/SKILL.md 2>/dev/null | wc -l)
+          echo "✅ $skills SKILL.md files"
+          [ $skills -ge 2 ]
