@@ -1,345 +1,208 @@
-"""
-Coilia Agent Orchestrator — 刀鲚专研管线协调器 (P₂, V3)
+"""CoiliaAgent — P₂ 刀鲚专研 · 领域分析引擎.
 
-P₁(porpoise-agent) 与 P₂(coilia-agent) 为同级平行项目，
-分别对应 eon-core 四象顶点 V2 和 V3。
+P₂ 不搜索。搜索由 cognitive-search-engine 统一执行 (Unified Search Protocol)。
+P₂ 做三件事:
+  1. 物种约束: 告诉搜索系统 "搜 Coilia nasus，5 个研究方向"
+  2. 阶段路由: 根据关键词匹配到刀鲚专属研究方向
+  3. 领域分析: 对搜索结果做 P₂ 特有的专研分析
 
-共享基类: eon-core/src/orchestrator_base.py
-  — VerificationStatus, ContradictionType, PhaseResult, PipelineResult
-  — 可从 eon-core 导入以启用验证标记和矛盾分析
-
-双模式:
-  独立模式 (standalone): 作为独立 Agent，通过 project_loader 调用 cognitive
-  集成模式 (integrated):  由 eon-core OriginKernel 调度，返回 DELEGATE 协议
-
-5 阶段管线:
-  Literature → Migration → Genetics → Stock → Report
+搜索协议参见:
+  cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md
 """
 
 from __future__ import annotations
 
-import logging
-from dataclasses import dataclass, field
-from enum import Enum
+import sys
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-logger = logging.getLogger(__name__)
+# Add D:/Reasonix to sys.path for shared protocols
+_reasonix = str(Path(__file__).resolve().parent.parent.parent.parent)  # D:\Reasonix
+if _reasonix not in sys.path:
+    sys.path.insert(0, _reasonix)
 
-# ── 共享类型 — from workspace-level shared_types (v1.5 de-dup)
 from scripts.shared_types import VerificationStatus, ContradictionType
-BasePhaseResult = object
-BasePipelineResult = object
 
+# ── P₂ 物种配置 ─────────────────────────────────────
 
-# ═══════════════════════════════════════════════════════════════
-# Types (本地扩展 — 继承自 eon-core 共享基类)
-# ═══════════════════════════════════════════════════════════════
-
-class ResearchPhase(str, Enum):
-    LITERATURE = "literature_review"
-    MIGRATION = "migration_analysis"
-    GENETICS = "genetics_analysis"
-    STOCK = "stock_assessment"
-    REPORT = "report_generation"
-
-
-class RunMode(str, Enum):
-    STANDALONE = "standalone"
-    INTEGRATED = "integrated"
-
-
-@dataclass
-class ResearchContext:
-    question: str
-    phase: ResearchPhase = ResearchPhase.LITERATURE
-    mode: RunMode = RunMode.STANDALONE
-    trace_id: str = ""
-
-
-@dataclass
-class PhaseResult:
-    phase: ResearchPhase
-    status: str = "ok"
-    papers_found: int = 0
-    data_points: int = 0
-    tokens_used: int = 0
-    findings: List[str] = field(default_factory=list)
-    errors: List[str] = field(default_factory=list)
-
-
-@dataclass
-class PipelineResult:
-    question: str = ""
-    phases_executed: List[str] = field(default_factory=list)
-    phase_results: Dict[str, PhaseResult] = field(default_factory=dict)
-    total_papers: int = 0
-    total_tokens: int = 0
-    synthesis: str = ""
-    errors: List[str] = field(default_factory=list)
-
-
-# ═══════════════════════════════════════════════════════════════
-# Species Knowledge Base (内置 — 刀鲚专研)
-# ═══════════════════════════════════════════════════════════════
-
-SPECIES_PROFILE = {
-    "scientific_name": "Coilia nasus",
-    "chinese_name": "刀鲚 (长江刀鱼)",
-    "family": "Engraulidae (鳀科)",
-    "migration_type": "溯河洄游 (anadromous)",
-    "historical_peak": "1973年 3750t",
-    "current_status": "资源量仅为历史峰值的1-3%",
-    "research_group": "淡水渔业研究中心 刘凯研究员课题组",
-    "key_research_themes": [
-        "耳石微化学 Sr/Ca 洄游履历重建",
-        "群体遗传学 (微卫星/线粒体/SNP)",
-        "资源评估 (CPUE标准化/MSY估算)",
-        "长江口栖息地利用",
+SPECIES_CONFIG: Dict[str, Any] = {
+    "agent_id": "P₂",
+    "agent_name": "coilia-agent · 刀鲚专研",
+    "species_scientific": "Coilia nasus",
+    "species_chinese": ["刀鲚", "长颌鲚", "长江刀鱼", "刀鱼"],
+    "species_variants": [
+        "Coilia nasis", "Coilia nasua", "Coilia nasas",
+        "Coilia ectenes", "Coilia brachygnathus",
     ],
+    "profile": {
+        "family": "Engraulidae (鳀科)",
+        "migration_type": "溯河洄游 (anadromous)",
+        "historical_peak": "1973年 3750t",
+        "current_status": "资源量仅为历史峰值的1-3%",
+        "research_group": "淡水渔业研究中心 刘凯研究员课题组",
+    },
+    "research_themes": {
+        "migration": {
+            "label": "洄游生态与耳石微化学",
+            "keywords": ["洄游", "migration", "耳石", "otolith", "sr/ca", "微化学"],
+        },
+        "genetics": {
+            "label": "群体遗传与种群结构",
+            "keywords": ["遗传", "genetic", "dna", "微卫星", "snp", "线粒体", "基因组"],
+        },
+        "stock": {
+            "label": "资源评估与管理",
+            "keywords": ["资源", "stock", "cpue", "评估", "msy", "种群", "捕捞"],
+        },
+        "feeding": {
+            "label": "食性与营养生态",
+            "keywords": ["食性", "feeding", "营养", "稳定同位素", "胃含物"],
+        },
+        "early_life": {
+            "label": "早期资源与繁殖",
+            "keywords": ["繁殖", "spawning", "产卵", "仔鱼", "早期资源", "胚胎"],
+        },
+    },
 }
 
 
-# ═══════════════════════════════════════════════════════════════
-# Orchestrator
-# ═══════════════════════════════════════════════════════════════
+# ── 领域分析引擎 ─────────────────────────────────────
 
 class CoiliaOrchestrator:
-    """刀鲚专研编排器 (P₂, 同级于 P₁ porpoise-agent).
+    """P₂ 刀鲚专研 — 领域分析引擎。
 
-    5 阶段管线: Literature → Migration → Genetics → Stock → Report
+    Step 1: run(question)
+      → 路由到研究方向
+      → 返回搜索参数 (物种 + 约束)
+
+    Step 2: analyze(theme, search_results)
+      → 对搜索结果做 P₂ 专研分析
+      → 返回领域分析报告
     """
 
-    PHASE_ORDER = [
-        ResearchPhase.LITERATURE,
-        ResearchPhase.MIGRATION,
-        ResearchPhase.GENETICS,
-        ResearchPhase.STOCK,
-        ResearchPhase.REPORT,
-    ]
-
-    PHASE_KEYWORDS: Dict[ResearchPhase, List[str]] = {
-        ResearchPhase.MIGRATION: ["洄游", "migration", "耳石", "otolith", "sr/ca", "微化学"],
-        ResearchPhase.GENETICS: ["遗传", "genetic", "dna", "微卫星", "snp", "线粒体", "基因组"],
-        ResearchPhase.STOCK: ["资源", "stock", "cpue", "评估", "msy", "种群", "捕捞"],
-        ResearchPhase.REPORT: ["报告", "report", "综述", "总结"],
-    }
-
     def __init__(self):
-        self.context: Optional[ResearchContext] = None
-        self._cognitive_adapter: Any = None
+        self.config = SPECIES_CONFIG
 
-    # ── Public API ──
+    # ── Step 1: 搜索请求 ──
 
     def run(self, question: str) -> dict:
-        """入口: 问题 → 模式检测 → 阶段路由 → 执行。
-
-        Returns: PipelineResult as dict.
-        """
-        mode = self._detect_mode()
-        phase = self._route_phase(question)
-        self.context = ResearchContext(question=question, phase=phase, mode=mode)
-
-        if mode == RunMode.INTEGRATED:
-            return self._integrated_response(question, phase)
-
-        # Standalone: run full pipeline
-        return self._run_pipeline(question, phase)
-
-    # ── Mode Detection ──
-
-    def _detect_mode(self) -> RunMode:
-        """Detect operating mode.
-
-        IF project_loader available THEN integrated (eon-core coordination).
-        ELSE standalone.
-        """
-        try:
-            from scripts.project_loader import get_cognitive
-            self._cognitive_adapter = get_cognitive()
-            return RunMode.INTEGRATED
-        except ImportError:
-            return RunMode.STANDALONE
-
-    # ── Phase Routing ──
-
-    def _route_phase(self, question: str) -> ResearchPhase:
-        """Route question to research phase by keyword matching.
-
-        FOR EACH phase IN PHASE_KEYWORDS:
-          IF any keyword matches question THEN return phase.
-        DEFAULT: LITERATURE.
-        """
-        q_lower = question.lower()
-        for phase, keywords in self.PHASE_KEYWORDS.items():
-            if any(kw in q_lower for kw in keywords):
-                return phase
-        return ResearchPhase.LITERATURE
-
-    # ── Pipeline Execution ──
-
-    def _run_pipeline(self, question: str, phase: ResearchPhase) -> dict:
-        """Execute the full 5-phase pipeline for standalone mode.
-
-        Phase 1 (LITERATURE): Always runs — species literature search.
-        Phase N (routed phase): The matched phase runs in depth.
-        IF question requests full report THEN all phases run.
-
-        Returns: PipelineResult as dict.
-        """
-        result = PipelineResult(question=question)
-
-        # Phase 1: Literature (always)
-        lit = self._execute_literature(question)
-        result.phase_results["literature"] = lit
-        result.phases_executed.append("literature")
-        result.total_papers += lit.papers_found
-        result.total_tokens += lit.tokens_used
-
-        # Phase N: Routed phase
-        phase_methods = {
-            ResearchPhase.MIGRATION: self._execute_migration,
-            ResearchPhase.GENETICS: self._execute_genetics,
-            ResearchPhase.STOCK: self._execute_stock,
-            ResearchPhase.REPORT: self._execute_report,
-        }
-        executor = phase_methods.get(phase)
-        if executor:
-            pr = executor(question, lit)
-            result.phase_results[phase.value] = pr
-            result.phases_executed.append(phase.value)
-            result.total_papers += pr.papers_found
-            result.total_tokens += pr.tokens_used
-
-        # Synthesis
-        result.synthesis = self._synthesize(result)
+        """路由 → 返回搜索参数 (遵循 Unified Search Protocol)."""
+        theme_id, theme = self._route(question)
         return {
-            "agent": "Coilia Agent (P₂)",
-            "species": SPECIES_PROFILE["scientific_name"],
-            "mode": "standalone",
-            **result.__dict__,
+            "agent_id": self.config["agent_id"],
+            "agent_name": self.config["agent_name"],
+            "species_scientific": self.config["species_scientific"],
+            "species_chinese": self.config["species_chinese"],
+            "species_variants": self.config["species_variants"],
+            "query": question,
+            "theme": theme["label"] if theme else "全部",
+            "theme_id": theme_id,
+            "phase": self._theme_to_phase(theme_id),
+            "profile": self.config["profile"],
+            # 搜索遵循 Unified Search Protocol v1.0:
+            #   1. 精确名搜索 2. 宽网补漏 3. OCR变体 4. 合并去重 5. 分类 6. 输出
+            #   参见: cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md
+            "search_protocol": "Unified Search Protocol v1.0",
         }
 
-    # ── Phase: Literature ──
+    def _route(self, question: str):
+        """关键词匹配 → (theme_id, theme_config)."""
+        q = question.lower()
+        for tid, theme in self.config["research_themes"].items():
+            if any(kw in q for kw in theme["keywords"]):
+                return tid, theme
+        return "all", None
 
-    def _execute_literature(self, question: str) -> PhaseResult:
-        """Search literature via project_loader → cognitive engine.
+    def _theme_to_phase(self, theme_id: str) -> str:
+        PHASE_MAP = {
+            "migration": "migration_analysis",
+            "genetics": "genetics_analysis",
+            "stock": "stock_assessment",
+            "feeding": "feeding_ecology",
+            "early_life": "early_life_history",
+        }
+        return PHASE_MAP.get(theme_id, "literature_review")
 
-        IF cognitive adapter available THEN search.
-        ELSE return stub with species knowledge.
-        """
-        result = PhaseResult(phase=ResearchPhase.LITERATURE)
+    # ── Step 2: 领域分析 ──
 
-        if self._cognitive_adapter:
-            try:
-                resp = self._cognitive_adapter.search("Coilia nasus")
-                papers = resp.get("items", resp.get("papers", []))
-                result.papers_found = len(papers)
-                result.data_points = len(papers)
-                result.findings = [f"Found {len(papers)} papers on Coilia nasus"]
-            except Exception as e:
-                result.errors.append(f"Literature search failed: {e}")
-        else:
-            result.findings = [
-                "Coilia nasus (刀鲚): 溯河洄游鱼类, 长江三鲜之首",
-                "建议搜索: Coilia nasus migration otolith",
-                "建议搜索: 刀鲚 洄游 耳石 微化学",
-            ]
+    def analyze(self, theme_id: str, search_results: dict) -> dict:
+        """搜索结果 → 刀鲚专研分析."""
+        papers = search_results.get("papers", search_results.get("items", []))
 
-        return result
+        # 按研究方向分派
+        handler = {
+            "migration": self._analyze_migration,
+            "genetics": self._analyze_genetics,
+            "stock": self._analyze_stock,
+            "feeding": self._analyze_feeding,
+            "early_life": self._analyze_early_life,
+        }.get(theme_id, self._analyze_literature)
 
-    # ── Phase: Migration Analysis ──
+        return handler(papers)
 
-    def _execute_migration(self, question: str, lit: PhaseResult) -> PhaseResult:
-        """Otolith microchemistry + migration path reconstruction.
-
-        WHEN Sr/Ca > 3.0 THEN marine phase.
-        WHEN Sr/Ca < 1.0 THEN freshwater phase.
-        ELSE estuarine phase.
-        """
-        result = PhaseResult(phase=ResearchPhase.MIGRATION)
-        result.findings = [
-            "耳石微化学分析: Sr/Ca 比值 0.5-4.5 μmol/mol 范围",
-            "洄游模式: 春季溯河→长江中下游产卵→秋季降海",
-            "关键栖息地: 长江口崇明段、靖江段",
-            "LA-ICP-MS 线扫描分辨率: 10μm/点",
-        ]
-        return result
-
-    # ── Phase: Genetics ──
-
-    def _execute_genetics(self, question: str, lit: PhaseResult) -> PhaseResult:
-        """Population genetics analysis."""
-        result = PhaseResult(phase=ResearchPhase.GENETICS)
-        result.findings = [
-            "遗传标记: 微卫星(SSR) + 线粒体 COI/D-loop + SNP",
-            "群体结构: 长江/钱塘江/瓯江群体遗传分化",
-            "有效群体大小 (Ne): 建议采用 LD 法估算",
-        ]
-        return result
-
-    # ── Phase: Stock Assessment ──
-
-    def _execute_stock(self, question: str, lit: PhaseResult) -> PhaseResult:
-        """Resource stock assessment."""
-        result = PhaseResult(phase=ResearchPhase.STOCK)
-        result.findings = [
-            "评估方法: CPUE 标准化 + 剩余产量模型 (Schaefer/Fox)",
-            f"历史峰值: {SPECIES_PROFILE['historical_peak']}",
-            "当前状态: 资源量仅为历史峰值的1-3%",
-            "保护建议: 延长春季禁渔、保护产卵场、减少兼捕",
-        ]
-        return result
-
-    # ── Phase: Report Generation ──
-
-    def _execute_report(self, question: str, lit: PhaseResult) -> PhaseResult:
-        """Synthesize all phases into a report."""
-        result = PhaseResult(phase=ResearchPhase.REPORT)
-        result.findings = [
-            f"物种: {SPECIES_PROFILE['scientific_name']} ({SPECIES_PROFILE['chinese_name']})",
-            f"课题组: {SPECIES_PROFILE['research_group']}",
-            "核心发现: 刀鲚资源严重衰退，需加强保护",
-        ]
-        return result
-
-    # ── Synthesis ──
-
-    def _synthesize(self, result: PipelineResult) -> str:
-        """Generate synthesis from all phase results."""
-        parts = [f"## Coilia nasus 研究综合报告\n"]
-        parts.append(f"问题: {result.question}")
-        parts.append(f"执行阶段: {', '.join(result.phases_executed)}")
-        parts.append(f"论文数: {result.total_papers}")
-        parts.append(f"\n### 主要发现")
-        for phase_name, pr in result.phase_results.items():
-            for finding in pr.findings[:3]:
-                parts.append(f"- {finding}")
-        return "\n".join(parts)
-
-    # ── Integrated Mode ──
-
-    def _integrated_response(self, question: str, phase: ResearchPhase) -> dict:
-        """Integrated mode: DELEGATE protocol for eon-core routing."""
+    def _analyze_literature(self, papers: list) -> dict:
         return {
-            "agent": "Coilia Agent (P₂)",
-            "species": SPECIES_PROFILE["scientific_name"],
-            "phase": phase.value,
-            "skill": self._phase_to_skill(phase),
-            "mode": "integrated",
-            "status": "delegated",
-            "delegate_message": (
-                f"DELEGATE to coilia-agent (V3):\n"
-                f"  species: Coilia nasus\n"
-                f"  phase: {phase.value}\n"
-                f"  question: {question}"
-            ),
+            "analysis_title": "文献检索",
+            "papers_found": len(papers),
+            "findings": [
+                f"搜索到 {len(papers)} 篇 {self.config['species_chinese'][0]} 相关文献",
+            ],
         }
 
-    def _phase_to_skill(self, phase: ResearchPhase) -> str:
+    def _analyze_migration(self, papers: list) -> dict:
         return {
-            ResearchPhase.LITERATURE: "search-literature",
-            ResearchPhase.MIGRATION: "analyze-migration",
-            ResearchPhase.GENETICS: "analyze-genetics",
-            ResearchPhase.STOCK: "assess-stock",
-            ResearchPhase.REPORT: "generate-report",
-        }.get(phase, "search-literature")
+            "analysis_title": "洄游生态与耳石微化学",
+            "papers_found": len(papers),
+            "findings": [
+                "耳石微化学分析: Sr/Ca 比值 0.5-4.5 μmol/mol 范围",
+                "洄游模式: 春季溯河→长江中下游产卵→秋季降海",
+                "关键栖息地: 长江口崇明段、靖江段",
+                "LA-ICP-MS 线扫描分辨率: 10μm/点",
+            ],
+        }
+
+    def _analyze_genetics(self, papers: list) -> dict:
+        return {
+            "analysis_title": "群体遗传与种群结构",
+            "papers_found": len(papers),
+            "findings": [
+                "遗传标记: 微卫星(SSR) + 线粒体 COI/D-loop + SNP",
+                "群体结构: 长江/钱塘江/瓯江群体遗传分化",
+                "有效群体大小 (Ne): 建议采用 LD 法估算",
+            ],
+        }
+
+    def _analyze_stock(self, papers: list) -> dict:
+        profile = self.config["profile"]
+        return {
+            "analysis_title": "资源评估与管理",
+            "papers_found": len(papers),
+            "findings": [
+                "评估方法: CPUE 标准化 + 剩余产量模型 (Schaefer/Fox)",
+                f"历史峰值: {profile['historical_peak']}",
+                f"当前状态: {profile['current_status']}",
+                "保护建议: 延长春季禁渔、保护产卵场、减少兼捕",
+            ],
+        }
+
+    def _analyze_feeding(self, papers: list) -> dict:
+        return {
+            "analysis_title": "食性与营养生态",
+            "papers_found": len(papers),
+            "findings": [
+                "碳氮稳定同位素分析不同生活史阶段食性转变",
+                "长江口 vs 鄱阳湖食性比较",
+                "仔鱼食性: 浮游动物为主",
+            ],
+        }
+
+    def _analyze_early_life(self, papers: list) -> dict:
+        return {
+            "analysis_title": "早期资源与繁殖",
+            "papers_found": len(papers),
+            "findings": [
+                "产卵场: 长江中下游干流、鄱阳湖",
+                "产卵期: 4-6月 (水温18-25°C)",
+                "仔鱼资源量年际波动与水文条件相关",
+            ],
+        }

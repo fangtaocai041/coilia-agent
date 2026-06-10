@@ -44,6 +44,7 @@
 | **fish-ecology-assistant** | **Triangle V0** | Knowledge | Multi-basin fish DB (Yangtze 443 + Tumen + Suifen) |
 | **cognitive-search-engine** | **Triangle V1** | Validation | BDI+ReAct · literature search · authority scoring |
 | **porpoise-agent** | **Derived P₁** | Porpoise domain | NBHF acoustics · habitat modeling (sister project) |
+| **culter-agent** | **Derived P₃** | Culter specialist | Genomics · age-growth · isotopes · coexistence |
 | **conflict-arbiter** | **Derived C** | Conflict arbitration | Multi-source protection-level arbitration |
 
 > **DirectLoader Protocol**: cognitive-search-engine loaded via `importlib` from `D:\Reasonix\cognitive-search-engine\src\` — engine updates auto-propagate, zero MCP overhead.

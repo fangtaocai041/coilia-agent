@@ -1,94 +1,99 @@
-"""CoiliaAdapter — coilia-agent (V3 / P₂ 同级项目).
+"""CoiliaAdapter — P₂ 刀鲚专研 · 三角闭环适配器.
 
-【核心专精】assess_species(species: str, context: str) → SpeciesAssessment
-    耳石微化学 + 洄游生态 + 资源评估 (领域专精知识)
-    → 通路 P3(←cognitive)
+实现 scripts/adapter_protocol.py::IProjectAdapter 标准接口 (D:/Reasonix 层)。
+被 scripts/project_loader.py 发现和加载。
 
-Wraps CoiliaOrchestrator for cross-project consumption.
-Provides otolith microchemistry + resource assessment as standard interface.
+P₂ 在三角闭环中的位置:
+  S(fish-ecology-assistant) → T(porpoise-agent) → V(cognitive-search-engine)
+                                    ↑
+                               P₂ 刀鲚专研 (本 Adapter)
 
-P₁(porpoise-agent) 与 P₂(coilia-agent) 为同级平行项目，
-分别对应 eon-core 四象顶点 V2 和 V3。
+搜索由 cognitive-search-engine 统一提供 (Unified Search Protocol),
+P₂ 负责物种约束 (Coilia nasus) + 领域专研分析。
+参见: cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md
 """
 
 from __future__ import annotations
 
 import logging
-import os
 import sys
 from pathlib import Path
 from typing import Any, Dict
 
-logger = logging.getLogger(__name__)
+# Add D:/Reasonix to sys.path for shared protocols
+_reasonix = str(Path(__file__).resolve().parent.parent.parent)  # D:\Reasonix
+if _reasonix not in sys.path:
+    sys.path.insert(0, _reasonix)
 
-# Import shared adapter protocol (workspace root on sys.path)
-try:
-    from scripts.adapter_protocol import IProjectAdapter
-except ImportError:
-    IProjectAdapter = object  # fallback for standalone usage
+from scripts.adapter_protocol import IProjectAdapter
+
+from src.agent.orchestrator import CoiliaOrchestrator
+
+logger = logging.getLogger(__name__)
 
 
 class CoiliaAdapter(IProjectAdapter):
-    """Adapter for coilia-agent (V3 — 刀鲚领域, P₂ 同级项目)."""
+    """P₂ 刀鲚专研 — 标准 IProjectAdapter 实现."""
 
     project_name = "coilia-agent"
 
     def __init__(self) -> None:
-        self._orchestrator: Any = None
-        self._init_orchestrator()
+        self._orchestrator = CoiliaOrchestrator()
 
-    def _init_orchestrator(self) -> None:
-        base = Path(__file__).resolve().parent.parent
-        orch_file = base / "src" / "agent" / "orchestrator.py"
-        if not orch_file.is_file():
-            logger.warning(f"Coilia orchestrator not found at {orch_file}")
-            return
-        proj_str = str(base)
-        if proj_str not in sys.path:
-            sys.path.insert(0, proj_str)
-        try:
-            import importlib, importlib.util
-            # Clear cached 'src' to avoid cross-project conflict
-            for key in list(sys.modules.keys()):
-                if key == "src" or key.startswith("src."):
-                    del sys.modules[key]
-            module_name = f"coilia.orchestrator.{id(self)}"
-            spec = importlib.util.spec_from_file_location(
-                module_name, str(orch_file))
-            if spec and spec.loader:
-                mod = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = mod  # 必须注册，否则 @dataclass 崩溃
-                spec.loader.exec_module(mod)
-                cls = getattr(mod, "CoiliaOrchestrator", None)
-                if cls:
-                    self._orchestrator = cls()
-        except Exception as exc:
-            logger.warning(f"Coilia orchestrator init failed: {exc}")
+    # ── IProjectAdapter 标准接口 ──
 
     def search(self, query: str, **kwargs) -> Dict[str, Any]:
-        if self._orchestrator:
-            try:
-                result = self._orchestrator.run(query)
-                return {"status": "ok", "result": result}
-            except Exception as exc:
-                return {"status": "error", "error": str(exc)}
-        return {"status": "unavailable", "query": query,
-                "note": "Coilia orchestrator not loaded"}
+        """执行刀鲚搜索 + 领域分析。
+
+        此方法：
+        1. 返回搜索参数 (物种约束 + 研究方向)
+        2. 实际搜索由调用方 (cognitive-search-engine / Reasonix) 完成
+        3. 搜索完成后调 analyze() 做 P₂ 专研分析
+        """
+        return self._orchestrator.run(query)
 
     def health(self) -> Dict[str, Any]:
-        return {"project": self.project_name,
-                "status": "HEALTHY" if self._orchestrator else "DEGRADED"}
+        return {
+            "project": self.project_name,
+            "role": "P₂ · 刀鲚专研",
+            "status": "HEALTHY",
+            "species": "Coilia nasus",
+        }
 
     def info(self) -> Dict[str, Any]:
         return {
             "project": self.project_name,
-            "role": "V3_DomainVertexP2 (P₂ 同级项目)",
-            "symbol": "🌦️ 少阳",
-            "wuxing": "水 (WATER)",
-            "capabilities": ["otolith_microchemistry", "migration_path",
-                           "resource_assessment", "conservation_recommendations"],
+            "role": "P₂ · 刀鲚专研",
+            "species": ["Coilia nasus (刀鲚/长江刀鱼)"],
+            "related_species": [
+                "Coilia brachygnathus (短颌鲚)",
+                "Coilia mystus (凤鲚)",
+            ],
+            "research_themes": [
+                "洄游生态与耳石微化学",
+                "群体遗传与种群结构",
+                "资源评估与管理",
+                "食性与营养生态",
+                "早期资源与繁殖",
+            ],
+            "capabilities": [
+                "otolith_microchemistry",
+                "migration_path_reconstruction",
+                "population_genetics",
+                "stock_assessment",
+                "conservation_recommendations",
+            ],
+            "search_protocol": "Unified Search Protocol v1.0 "
+                "(cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md)",
         }
+
+    # ── P₂ 特有方法 ──
+
+    def analyze(self, phase: str, search_result: dict) -> Dict[str, Any]:
+        """搜索结果 → P₂ 领域专研分析."""
+        return self._orchestrator.analyze(phase, search_result)
 
 
 def get_adapter() -> CoiliaAdapter:
+    """Factory — 被 scripts/project_loader.py 调用 (D:/Reasonix 层)."""
     return CoiliaAdapter()

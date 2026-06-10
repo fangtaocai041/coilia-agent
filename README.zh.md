@@ -4,7 +4,7 @@
 
 <div align="center">
   <h1>🐟 Coilia Agent — 刀鲚专研 (P₂)</h1>
-  <p><strong>S-T-V-P₁-P₂ 五体架构 · P₂ 刀鲚专研层 · 淡水渔业研究中心 刘凯研究员课题组</strong></p>
+  <p><strong>三角闭环衍生项目 · P₂ 刀鲚专研 · 淡水渔业研究中心 刘凯研究员课题组</strong></p>
   <p>3 Skills · DirectLoader 认知搜索 · 知识库 · Panta Rhei 哲学</p>
   <p>🤝 姊妹项目: <a href="https://github.com/fangtaocai041/porpoise-agent">porpoise-agent (P₁ 江豚)</a> · 🧠 协调器: <a href="https://github.com/fangtaocai041/eon-core">eon-core</a></p>
   <p>🌊 Panta Rhei · 万物皆变</p>
@@ -16,19 +16,19 @@
   <a href="#"><img src="https://img.shields.io/badge/DeepSeek-V3%2BR1-6366f1?style=flat-square" alt="DeepSeek"></a>
   <a href="#"><img src="https://img.shields.io/badge/skills-3-f59e0b?style=flat-square" alt="Skills:3"></a>
   <a href="#"><img src="https://img.shields.io/badge/知识库-Coilia_nasus-8b5cf6?style=flat-square" alt="知识库"></a>
-  <a href="config/agent.yaml"><img src="https://img.shields.io/badge/agent-v1.2.0-ec4899?style=flat-square" alt="Agent:v1.2.0"></a>
+  <a href="config/agent.yaml"><img src="https://img.shields.io/badge/agent-v1.3.0-ec4899?style=flat-square" alt="Agent:v1.3.0"></a>
 </p>
 
 ## 🧠 由 eon-core 智能协调
 
-> P₂ (V3) 由 [eon-core](https://github.com/fangtaocai041/eon-core) (10层统一内核) 智能协调：**混沌增强路由** · **六道轮回业力引擎** · **DAG拓扑路由**。
+> P₂ (衍生自三角闭环) 由 [eon-core](https://github.com/fangtaocai041/eon-core) (三角闭环协调器) 智能协调：**混沌增强路由** · **六道轮回业力引擎** · **DAG拓扑路由**。
 
-## 🔺 S-T-V-P₁-P₂ 架构角色: **Coilia Specialist (P₂ / V3)**
+## 🔺 架构角色: **衍生项目 P₂ (刀鲚专研)**
 
-> S-T-V-P₁-P₂ 生态系统，由 [eon-core](https://github.com/fangtaocai041/eon-core) 统一协调。
-> `fish(S/V0) → cognitive(V/V1)`，`porpoise(P₁/V2)` + `coilia(P₂/V3)` 为领域专研。
+> 三角闭环: fish(知识供给) + cognitive(验证引擎) + eon-core(协调内核)
+> P₂ 从三角派生，依赖三角提供物种知识和文献搜索能力。
 > 刀鲚专研: 耳石微化学、洄游生态、资源评估。
-> **姊妹项目**: [porpoise-agent (P₁ / V2)](https://github.com/fangtaocai041/porpoise-agent) — 长江江豚专研, 同课题组。
+> **姊妹项目**: [porpoise-agent (P₁)](https://github.com/fangtaocai041/porpoise-agent) — 江豚专研, 同级衍生项目, 同课题组。
 
 ## 研究背景
 
@@ -41,9 +41,11 @@
 | 项目 | 角色 | 技术栈 | 说明 |
 |------|:--:|--------|------|
 | **eon-core** | **协调器** | Python · 10层内核 | EventBus · 六道轮回 · DAG路由 · 自愈 |
-| **porpoise-agent** | **P₁ / V2** (Porpoise) | Python · 18 skills | 姊妹项目 — NBHF声学 · 栖息地建模 (同课题组) |
+| **porpoise-agent** | **衍生 P₁** (Porpoise) | Python · 18 skills | 姊妹项目 — NBHF声学 · 栖息地建模 (同课题组) |
 | **fish-ecology-assistant** | **S / V0** (State) | Reasonix Skills · 21 MCP | 知识供给 — 长江 443 种鱼类数据库 |
 | **cognitive-search-engine** | **V / V1** (Validation) | Python · BDI+ReAct | 验证引擎 — 文献搜索 · 权威评分 |
+| **culter-agent** | **衍生 P₃** (Culter) | Python · 8 skills | 鲌类专研 — 基因组学 · 年龄生长 · 同位素 |
+| **conflict-arbiter** | **衍生 C** (Conflict) | Python | 冲突仲裁 — 加权裁决 · 熔断 |
 
 > **DirectLoader 协议**: cognitive-search-engine 通过 `importlib` 从 `D:\Reasonix\cognitive-search-engine\src\` 加载 — 引擎更新自动生效，零 MCP 开销。
 > 完整规范: workspace 根目录 `coordination.yaml`。
@@ -65,7 +67,7 @@
 |------|:--:|------|
 | 🐟 领域深度 | ⭐⭐⭐⭐⭐ | 刀鲚完整知识库：生物学、洄游特性、耳石微化学、资源评估 |
 | 🔬 研究方法 | ⭐⭐⭐⭐☆ | 3 个核心 Skill 定义完整 (文献检索/洄游分析/资源评估) |
-| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | P₂/V3 角色，与 P₁(江豚) 平级，统一由 eon-core 调度 |
+| 🔗 生态位整合 | ⭐⭐⭐⭐⭐ | 衍生项目 P₂，与 P₁(江豚) 同级衍生，统一由 eon-core 调度 |
 | 📡 可执行性 | ⭐⭐⭐☆☆ | 当前为 delegation stub 架构，实际搜索通过 DirectLoader 调用 cognitive-search-engine |
 | 🚀 可扩展性 | ⭐⭐⭐⭐⭐ | 与 porpoise-agent 共享 P 层模板，3 步复制出新物种 Agent |
 
@@ -110,8 +112,7 @@ coilia-agent/
 │
 ├── config/
 │   ├── agent.yaml            ← Agent 行为配置
-│   ├── tao.yaml              ← ☯️ TAO (水·润下)
-│   ├── wuxing.yaml           ← 🔥 WuXing dynamics
+│   ├── component_registry.yaml
 │   └── component_registry.yaml
 │
 ├── src/
