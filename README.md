@@ -138,7 +138,7 @@ coilia-agent/
 
 | Version | Date | Changes |
 |---------|------|---------|
-| **v1.2.0** | 2026-06-08 | ☯️ TAO (水·润下) + 🔥 WUXING + standalone DirectLoader search |
+| **v1.2.0** | 2026-06-08 | ☯️ TAO (水·润下) + Monitoring + standalone DirectLoader search |
 | **v1.1.0** | 2026-06-08 | Standalone/integrated dual mode |
 | **v1.0.0** | 2026-06-08 | Initial release — P₂ 刀鲚专研 · 3 Skills · knowledge base |
 
@@ -162,7 +162,7 @@ coilia-agent/
 |:--------|:-----|:------|:-------------|
 | **v1.4.0** | 2026-06-20 | 🔗 KB-First 搜索集成 + 🧹 prompts/__init__.py 补全 |
 | **v1.3.0** | 2026-06-09 | Cross-Project Sync | + Badge row, + S-T-V role (P₂/V3), + eon-core coordination, + Skills table, + Search Infrastructure, + Project Structure, + README Changelog |
-| **v1.2.0** | 2026-06-08 | ☯️ TAO + WUXING | + TAO (水·润下) + WUXING dynamics + standalone DirectLoader search |
+| **v1.2.0** | 2026-06-08 | ☯️ TAO + Monitoring | + TAO (水·润下) + Monitoring + standalone DirectLoader search |
 | **v1.1.0** | 2026-06-08 | Dual Mode | Standalone/integrated dual mode |
 | **v1.0.0** | 2026-06-08 | Initial | P₂ 刀鲚专研 · 3 Skills · knowledge base |
 
