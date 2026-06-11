@@ -15,7 +15,6 @@ P₂ 负责物种约束 (Coilia nasus) + 领域专研分析。
 
 from __future__ import annotations
 
-import logging
 import sys
 from pathlib import Path
 from typing import Any, Dict
@@ -28,8 +27,6 @@ if _reasonix not in sys.path:
 from scripts.adapter_protocol import IProjectAdapter
 
 from src.agent.orchestrator import CoiliaOrchestrator
-
-logger = logging.getLogger(__name__)
 
 
 class CoiliaAdapter(IProjectAdapter):

@@ -1,5 +1,6 @@
 # Search Literature — 刀鲚文献检索 (P₂)
 
+> **参考脚本**: `scripts/literature_search.py`
 > **角色**: P₂ 刀鲚专研
 > **搜索协议**: [Unified Search Protocol v1.0](../../cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md)
 > **搜索执行**: cognitive-search-engine (Multi-engine: PubMed/Google Scholar/CNKI/万方/百度学术)

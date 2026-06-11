@@ -9,7 +9,6 @@ P₂ 刀鲚知识库查询脚本 — 对应 data/knowledge_base/species/coilia-n
 """
 
 import json
-import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, Optional

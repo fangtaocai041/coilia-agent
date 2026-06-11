@@ -35,6 +35,12 @@ agent:
       - name: "assess-stock"
         description: "资源评估 — CPUE标准化、种群动态模型、MSY估算"
         path: "src/skills/assess-stock/SKILL.md"
+      - name: "analyze-genetics"
+        description: "群体遗传学 — 微卫星/线粒体/SNP数据分析"
+        path: "src/skills/analyze-genetics/SKILL.md"
+      - name: "analyze-feeding"
+        description: "食性与营养生态 — 胃含物、稳定同位素、DNA宏条形码"
+        path: "src/skills/analyze-feeding/SKILL.md"
     inline_phases:
       - name: "genetics-analysis"
         description: "群体遗传学 — 微卫星/线粒体/SNP分析 (内联管线阶段)"

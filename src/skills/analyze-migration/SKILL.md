@@ -1,5 +1,6 @@
 # Analyze Migration — 刀鲚洄游生态分析
 
+> **参考脚本**: `scripts/migration_analysis.py`
 > **触发**: 用户询问刀鲚洄游路线/履历/模式
 > **数据源**: 耳石微化学 (Sr/Ca比)、标志放流、eDNA
 

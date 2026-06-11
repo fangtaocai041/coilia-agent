@@ -21,7 +21,7 @@ _reasonix = str(Path(__file__).resolve().parent.parent.parent.parent)  # D:\Reas
 if _reasonix not in sys.path:
     sys.path.insert(0, _reasonix)
 
-from scripts.shared_types import VerificationStatus, ContradictionType
+
 
 # ── P₂ 物种配置 ─────────────────────────────────────
 
@@ -125,8 +125,19 @@ class CoiliaOrchestrator:
 
     # ── Step 2: 领域分析 ──
 
-    def analyze(self, theme_id: str, search_results: dict) -> dict:
-        """搜索结果 → 刀鲚专研分析."""
+    def analyze(self, theme_id: str, search_results: dict,
+                use_scripts: bool = False) -> dict:
+        """搜索结果 → 刀鲚专研分析.
+
+        两种模式:
+          - use_scripts=False (默认): 使用内置硬编码发现 (适合文献综述)
+          - use_scripts=True: 调用 scripts/ 真实算法生成分析 (适合数据分析)
+
+        Args:
+            theme_id: 研究方向 ID (migration/genetics/stock/feeding/early_life)
+            search_results: 搜索结果 (含 papers 列表)
+            use_scripts: 是否调用 scripts/ 真实算法
+        """
         papers = search_results.get("papers", search_results.get("items", []))
 
         # 按研究方向分派
@@ -138,7 +149,117 @@ class CoiliaOrchestrator:
             "early_life": self._analyze_early_life,
         }.get(theme_id, self._analyze_literature)
 
-        return handler(papers)
+        result = handler(papers)
+
+        # 可选: 集成 scripts/ 真实算法结果
+        if use_scripts:
+            script_name = {
+                "migration": "migration_analysis",
+                "genetics": "genetics_analysis",
+                "stock": "stock_assessment",
+                "feeding": "feeding_analysis",
+                "early_life": "early_life_analysis",
+            }.get(theme_id)
+            if script_name:
+                script_result = self.call_analysis_script(script_name)
+                if script_result is not None:
+                    result["script_analysis"] = script_result
+
+        return result
+
+    # ── 脚本集成 (增量添加, 不改已有方法) ──
+
+    SCRIPTS = {
+        "literature_search": {
+            "module": "scripts.literature_search",
+            "func": "search_coilia",
+            "kwargs": {"query": "", "use_example": True},
+        },
+        "migration_analysis": {
+            "module": "scripts.migration_analysis",
+            "func": "analyze_migration",
+            "kwargs": {"use_example": True},
+        },
+        "genetics_analysis": {
+            "module": "scripts.genetics_analysis",
+            "func": "analyze_genetics",
+            "kwargs": {"use_example": True},
+        },
+        "feeding_analysis": {
+            "module": "scripts.feeding_analysis",
+            "func": "analyze_feeding",
+            "kwargs": {"use_example": True},
+        },
+        "stock_assessment": {
+            "module": "scripts.stock_assessment",
+            "func": "assess_stock",
+            "kwargs": {"use_example": True},
+        },
+        "early_life_analysis": {
+            "module": "scripts.early_life_analysis",
+            "func": "analyze_early_life",
+            "kwargs": {"use_example": True},
+        },
+    }
+
+    def call_analysis_script(self, script_name: str, **overrides) -> dict | None:
+        """调用 scripts/ 目录下的真实分析算法.
+
+        通过模块+函数名动态导入并调用，返回结构化结果。
+        脚本不可用时返回 None（不抛异常）。
+
+        Args:
+            script_name: 脚本标识 (例如 "migration_analysis")
+            **overrides: 覆盖默认参数的键值对
+
+        Returns:
+            dict 或 None (脚本不可用时)
+        """
+        spec = self.SCRIPTS.get(script_name)
+        if not spec:
+            return None
+
+        _reasonix = str(Path(__file__).resolve().parent.parent.parent.parent)
+        if _reasonix not in sys.path:
+            sys.path.insert(0, _reasonix)
+
+        try:
+            import importlib
+            mod = importlib.import_module(spec["module"])
+            func = getattr(mod, spec["func"])
+
+            kwargs = dict(spec["kwargs"])
+            kwargs.update(overrides)
+            result = func(**kwargs)
+            return self._script_result_to_dict(script_name, result)
+        except (ImportError, AttributeError, Exception):
+            return None
+
+    def _script_result_to_dict(self, script_name: str, result) -> dict:
+        """将脚本的返回值转换为可序列化的 dict。"""
+        import dataclasses
+        if result is None:
+            return {"script": script_name, "status": "empty"}
+
+        # 处理 dataclass → dict
+        def _to_dict(obj):
+            if dataclasses.is_dataclass(obj):
+                return {f.name: _to_dict(getattr(obj, f.name))
+                        for f in dataclasses.fields(obj)}
+            if isinstance(obj, (list, tuple)):
+                return [_to_dict(v) for v in obj]
+            if isinstance(obj, dict):
+                return {k: _to_dict(v) for k, v in obj.items()}
+            if hasattr(obj, '__dict__'):
+                return {k: _to_dict(v) for k, v in obj.__dict__.items()
+                        if not k.startswith('_')}
+            return obj
+
+        return {
+            "script": script_name,
+            "status": "ok",
+            "data": _to_dict(result),
+        }
 
     def _analyze_literature(self, papers: list) -> dict:
         return {

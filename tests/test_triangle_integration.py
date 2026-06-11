@@ -31,7 +31,7 @@ def fish_knowledge_base():
 
 
 class TestTriangleStep1FishKB:
-    """Step 1: S(fish) 知识库应包含 Coilia 属但不含 Coilia nasus"""
+    """Step 1: S(fish) 知识库应包含 Coilia 属 + Coilia nasus（闭环已补齐）"""
 
     def test_coilia_genus_present(self, fish_knowledge_base):
         """知识库有 Coilia 属物种"""
@@ -48,14 +48,14 @@ class TestTriangleStep1FishKB:
         )
         assert brachy, "短颌鲚应在知识库中"
 
-    def test_nasus_missing(self, fish_knowledge_base):
-        """刀鲚 (Coilia nasus) 不在知识库中 — 知识缺口"""
+    def test_nasus_present(self, fish_knowledge_base):
+        """刀鲚 (Coilia nasus) 已在知识库中 — 三角闭环写回已生效"""
         species = fish_knowledge_base.get("species", [])
         nasus = any(
             "nasus" in s.get("scientific", "").lower()
             for s in species
         )
-        assert not nasus, "刀鲚暂不在知识库中 (这是已知缺口)"
+        assert nasus, "刀鲚应已在知识库中 (三角闭环 V→S 写回)"
 
 
 # ═══════════════════════════════════════════════════════════════

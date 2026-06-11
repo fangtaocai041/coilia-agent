@@ -1,5 +1,6 @@
 # Assess Stock — 刀鲚资源评估
 
+> **参考脚本**: `scripts/stock_assessment.py`
 > **触发**: 用户询问刀鲚资源量/恢复趋势/可持续捕捞
 > **数据源**: 渔业调查、CPUE数据、文献
 
