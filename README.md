@@ -1,4 +1,4 @@
-﻿# Coilia Agent 🐟
+# Coilia Agent 🐟
 
 **P₂ 万物衍生** — 刀鲚专研 · 耳石微化学 · 洄游生态 · 资源评估。
 
@@ -69,25 +69,8 @@ python scripts/feeding_analysis.py --species "Coilia brachygnathus"
 ```
 ## 🚀 核心能力
 ```
-| 🚀 能力 | 📝 说明 |
-|:-----|:------|
-| **耳石微化学** | Sr/Ca 比值 → 洄游路线重建 |
-| **洄游生态** | 长江 → 近海 → 长江 生命周期 |
-| **资源评估** | CPUE 分析 + 种群动态模型 |
-| **食性分析** | 胃含物 + 稳定同位素 (δ¹³C, δ¹⁵N) |---------|:--------:|:--------|
-| [fish-ecology-assistant](../fish-ecology-assistant/) | V0 | 📦 知识供给 |
-| [cognitive-search-engine](../cognitive-search-engine/) | V1 | 🔍 搜索验证 |
-| [eon-core](../eon-core/) | Coord | ⚙️ 协调内核 |
-| [porpoise-agent](../porpoise-agent/) | P₁ | 🐬 江豚专研 |
-| [coilia-agent](../coilia-agent/) | P₂ | 🐟 刀鲚专研 |
-| [culter-agent](../culter-agent/) | P₃ | 🐟 鲌类专研 |
-| [conflict-arbiter](../conflict-arbiter/) | C | 🔥 冲突仲裁 |
-```
 
----
----
 
-```
 ## 🔗 生态体系
 ```
 > 🔥 和则无穷力量，分则顶尖专家引擎。

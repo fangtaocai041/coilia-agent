@@ -1,4 +1,4 @@
-﻿# Coilia Agent 🐟
+# Coilia Agent 🐟
 
 **P₂ 万物衍生** — 刀鲚专研 · 耳石微化学 · 洄游生态 · 资源评估。
 
@@ -173,20 +173,6 @@ coilia-agent/
 ```bash
 python -m pytest tests/ -v
 ```
-
-## 📜 许可证
-
-MIT---------|:--------:|:--------|
-| [fish-ecology-assistant](../fish-ecology-assistant/) | V0 | 📦 知识供给 |
-| [cognitive-search-engine](../cognitive-search-engine/) | V1 | 🔍 搜索验证 |
-| [eon-core](../eon-core/) | Coord | ⚙️ 协调内核 |
-| [porpoise-agent](../porpoise-agent/) | P₁ | 🐬 江豚专研 |
-| [coilia-agent](../coilia-agent/) | P₂ | 🐟 刀鲚专研 |
-| [culter-agent](../culter-agent/) | P₃ | 🐟 鲌类专研 |
-| [conflict-arbiter](../conflict-arbiter/) | C | 🔥 冲突仲裁 |
-
----
----
 
 
 ## 🔗 生态体系

@@ -1,4 +1,4 @@
-"""CoiliaAgent — P₂ 刀鲚专研 · 领域分析引擎.
+﻿"""CoiliaAgent — P₂ 刀鲚专研 · 领域分析引擎.
 
 P₂ 不搜索。搜索由 cognitive-search-engine 统一执行 (Unified Search Protocol)。
 P₂ 做三件事:
@@ -66,6 +66,15 @@ SPECIES_CONFIG: Dict[str, Any] = {
 }
 
 
+# ── Cognitive enhancement (from porpoise-agent BDI pattern) ──
+try:
+    from src.agent.cognitive_analyzer import CognitiveAnalyzer, CognitiveResult
+    _HAS_COGNITIVE = True
+except ImportError:
+    _HAS_COGNITIVE = False
+    CognitiveAnalyzer = None  # type: ignore
+    CognitiveResult = None    # type: ignore
+
 # ── 领域分析引擎 ─────────────────────────────────────
 
 class CoiliaOrchestrator:
@@ -103,6 +112,51 @@ class CoiliaOrchestrator:
             #   1. 精确名搜索 2. 宽网补漏 3. OCR变体 4. 合并去重 5. 分类 6. 输出
             #   参见: cognitive-search-engine/docs/UNIFIED_SEARCH_PROTOCOL.md
             "search_protocol": "Unified Search Protocol v1.0",
+        }
+
+
+    # ── BDI Cognitive Analysis (cross-pollination from porpoise-agent) ──
+
+    def analyze_with_cognition(self, question: str, theme_id: str = "",
+                               search_results: dict | None = None,
+                               depth: str = "standard") -> dict | None:
+        """Execute BDI cognitive analysis cycle.
+
+        Upgraded from porpoise-agent's BDI+ReAct+Reflexion pattern.
+        Perceive (gather beliefs) → Deliberate (form intentions) →
+        Execute (run analysis) → Reflect (self-critique) → Refine (iterate).
+
+        This is the RECOMMENDED analysis method — it produces higher quality,
+        self-critiqued results compared to the legacy _analyze_* methods.
+        """
+        if not _HAS_COGNITIVE:
+            # Fallback to legacy analysis
+            return self.analyze(theme_id, search_results or {}, use_scripts=True)
+
+        analyzer = CognitiveAnalyzer(self.config)
+        result: CognitiveResult = analyzer.analyze(
+            question=question,
+            theme_id=theme_id or self._route(question)[0],
+            search_results=search_results,
+            depth=depth,
+        )
+
+        return {
+            "mode": "cognitive_bdi",
+            "state": result.state.value,
+            "question": result.question,
+            "theme_id": result.theme_id,
+            "findings": result.findings,
+            "belief_confidence": result.belief.confidence,
+            "reflection": {
+                "strengths": result.reflection.strengths if result.reflection else [],
+                "weaknesses": result.reflection.weaknesses if result.reflection else [],
+                "missing_evidence": result.reflection.missing_evidence if result.reflection else [],
+                "needs_reanalysis": result.reflection.needs_reanalysis if result.reflection else False,
+            } if result.reflection else None,
+            "sources_used": result.sources_used,
+            "triangles_engaged": result.triangles_engaged,
+            "iterations": analyzer.iteration_count,
         }
 
     def _route(self, question: str):
@@ -327,3 +381,4 @@ class CoiliaOrchestrator:
                 "仔鱼资源量年际波动与水文条件相关",
             ],
         }
+
