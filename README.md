@@ -35,6 +35,7 @@ P₂ 是从三角核心衍生的第二个项目。它依赖 S/V0 的物种知识
     C   conflict-arbiter → 冲突仲裁
 ```
 ```
+
 ---
 ```
 ## 🧩 这个项目是什么
@@ -47,6 +48,7 @@ P₂ 是从三角核心衍生的第二个项目。它依赖 S/V0 的物种知识
 >
 > 我们说：但一条刀鲚可以——只要河流还在。
 ```
+
 ---
 ```
 ## ⚡ 快速上手
@@ -62,6 +64,7 @@ python scripts/migration_analysis.py --species "Coilia nasus"
 python scripts/feeding_analysis.py --species "Coilia brachygnathus"
 ```
 ```
+
 ---
 ```
 ## 🚀 核心能力
@@ -80,6 +83,7 @@ python scripts/feeding_analysis.py --species "Coilia brachygnathus"
 | [culter-agent](../culter-agent/) | P₃ | 🐟 鲌类专研 |
 | [conflict-arbiter](../conflict-arbiter/) | C | 🔥 冲突仲裁 |
 ```
+
 ---
 ---
 
@@ -102,6 +106,7 @@ python scripts/feeding_analysis.py --species "Coilia brachygnathus"
   🐟 culter-agent      → 鲌类专研 (P₃)
   🔥 conflict-arbiter  → 冲突仲裁 (C)
 ```
+
 > 🌊 万物皆变 · Panta Rhei
 >
 > 🏛️ 赫拉克利特说：人不能两次踏进同一条河流。
