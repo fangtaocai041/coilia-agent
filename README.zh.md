@@ -134,15 +134,22 @@ python scripts/literature_search.py --query "刀鲚洄游" --theme migration --j
 coilia-agent/
 ├── src/                          ← Python 源码
 │   ├── adapter.py                ← 跨项目接口 (IProjectAdapter)
-│   ├── main.py                   ← CLI 入口
-│   └── agent/orchestrator.py     ← 领域分析引擎
+│   ├── main.py                   ← CLI 入口 (coilia run --query "...")
+│   ├── agent/orchestrator.py     ← 领域分析引擎
+│   ├── prompts/system_prompts.py ← 系统提示词
+│   └── skills/                   ← 6 个 SKILL 模块
+│       ├── search-literature/    ← 文献搜索
+│       ├── analyze-genetics/     ← 群体遗传学
+│       ├── analyze-migration/    ← 洄游生态 + 耳石微化学
+│       ├── analyze-feeding/      ← 食性分析 + 稳定同位素
+│       ├── assess-stock/         ← 资源评估
+│       └── analyze-early-life/   ← 早期资源 + 产卵场
 ├── scripts/                      ← 8 个独立可执行分析脚本
 ├── data/knowledge_base/          ← 刀鲚物种知识库
 ├── config/                       ← agent.yaml + component_registry.yaml
-├── skills/                       ← 5 个 SKILL.md
-├── tests/                        ← 5 个测试套件
+├── tests/                        ← 测试套件
 ├── Dockerfile                    ← 容器化
-└── pyproject.toml                ← 项目元数据
+└── pyproject.toml                ← 项目元数据 (coilia CLI)
 ```
 
 ---
