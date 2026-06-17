@@ -59,6 +59,8 @@ python -m coilia_agent run "migration analysis"
 | 🔬 Domain Analysis | Species-specific research pipeline |
 | 📡 Triangle Powered | V0 knowledge + V1 search + Coord orchestration |
 | 🧠 Cognitive Loop | ReAct pattern for iterative analysis |
+| 🗂️ SpeciesRegistry | 4 Coilia species (nasus/brachygnathus/mystus/grayii) YAML 配置 |
+| 🏷️ --species CLI | All scripts support `--species` argument for multi-species analysis |
 
 ---
 
