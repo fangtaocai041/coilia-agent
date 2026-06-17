@@ -202,11 +202,11 @@ coilia-agent/
 
 | Dimension | Rating | Notes |
 |-----------|:-----:|-------|
-| 🔬 Domain Depth | ⭐⭐⭐⭐?| 4 Coilia species with YAML profiles |
-| 📡 Triangle Integration | ⭐⭐⭐⭐?| Direct fish-ecology KB read/write |
-| 🧠 Cognitive Architecture | ⭐⭐⭐⭐?| ReAct loop for iterative analysis |
-| 🧪 Test Coverage | ⭐⭐⭐⭐?| 144 tests across 8 scripts |
-| 🚀 Extensibility | ⭐⭐⭐⭐?| Add species = new YAML file |
+| 🔬 Domain Depth | ⭐⭐⭐⭐⭐| 4 Coilia species with YAML profiles |
+| 📡 Triangle Integration | ⭐⭐⭐⭐⭐| Direct fish-ecology KB read/write |
+| 🧠 Cognitive Architecture | ⭐⭐⭐⭐⭐| ReAct loop for iterative analysis |
+| 🧪 Test Coverage | ⭐⭐⭐⭐⭐| 144 tests across 8 scripts |
+| 🚀 Extensibility | ⭐⭐⭐⭐⭐| Add species = new YAML file |
 
 ### Strengths
 - **Taxonomic focus**: Deep specialization on *Coilia* genus ?otolith microchemistry, migration ecology, genetics
