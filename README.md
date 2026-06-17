@@ -1,4 +1,4 @@
-![Python 3.10+](https://img.shields.io/badge/Python%203.10%2B-3776AB?style=flat-square)
+﻿![Python 3.10+](https://img.shields.io/badge/Python%203.10%2B-3776AB?style=flat-square)
   ![MIT](https://img.shields.io/badge/MIT-34D058?style=flat-square)
   ![v1.4.0](https://img.shields.io/badge/v1.4.0-8A4FCE?style=flat-square)
   ![4 species](https://img.shields.io/badge/4%20species-007EC6?style=flat-square)
@@ -254,7 +254,7 @@ Triangle Core + Derived Architecture (coordinated by eon-core):
 
 | Version | Date | Theme | What Changed |
 |---------|------|-------|-------------|
-| v8.0 | 2026-06-20 | README Restoration | Restored archive, re-added badges, deep structure |
+| v8.0 | 2026-06-18 | README Restoration | Restored archive, re-added badges, deep structure |
 | v7.0 | 2026-06-19 | Self-Assessment Overhaul | Star ratings, structured Strengths/Limitations/Roadmap |
 | v6.0 | 2026-06-18 | Ecosystem Map | Added full Triangle Core + Derived diagram, cross-project links |
 | v5.0 | 2026-06-17 | v1.4.0 Sync | Analysis scripts table, 144 tests, SpeciesRegistry docs |
@@ -273,4 +273,4 @@ Triangle Core + Derived Architecture (coordinated by eon-core):
 
 This project is not a fixed toolset ?it is a **living system**. Every component has built-in expiration mechanisms, version tracking, and emergence awareness. As your research deepens, packages update, and new methods emerge, it evolves with you.
 
-*Last updated: 2026-06-17　|　Environment: Reasonix Code · DeepSeek Powered*
+*Last updated: 2026-06-18　|　Environment: Reasonix Code · DeepSeek Powered*
