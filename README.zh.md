@@ -1,7 +1,6 @@
 # 🐟 刀鲚智能体
 
-[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python) ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square) ![Version](https://img.shields.io/badge/Version-v1.3.0-blueviolet?style=flat-square) ![ReAct](https://img.shields.io/badge/ReAct-Cognitive%20Loop-orange?style=flat-square) ![Scripts](https://img.shields.io/badge/Scripts-8%20algorithms-success?style=flat-square) ![Domain](https://img.shields.io/badge/Domain-Coilia%20Migration-9cf?style=flat-square) ![Triangle](https://img.shields.io/badge/Triangle-Powered-yellow?style=flat-square)
 
 > 长江鱼类领域专研智能体。
 > 和则无穷力量，分则顶尖专家引擎。
