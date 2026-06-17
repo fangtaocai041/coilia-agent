@@ -8,6 +8,7 @@
   ![Triangle](https://img.shields.io/badge/Triangle%20Powered-EC4899?style=flat-square)
   ![Domain](https://img.shields.io/badge/Coilia%20Migration-F59E0B?style=flat-square)
   ![CN-EN](https://img.shields.io/badge/CN-EN-6B7280?style=flat-square)
+  [![DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/fangtaocai041/coilia-agent)
 </p>
 
 [English](README.md) · [中文](README.zh.md)
@@ -198,6 +199,14 @@ coilia-agent/
 
 ## 🪞 Self-Assessment
 
+| Dimension | Rating | Notes |
+|-----------|:-----:|-------|
+| 🔬 Domain Depth | ⭐⭐⭐⭐⭐ | 4 Coilia species with YAML profiles |
+| 📡 Triangle Integration | ⭐⭐⭐⭐⭐ | Direct fish-ecology KB read/write |
+| 🧠 Cognitive Architecture | ⭐⭐⭐⭐☆ | ReAct loop for iterative analysis |
+| 🧪 Test Coverage | ⭐⭐⭐⭐☆ | 144 tests across 8 scripts |
+| 🚀 Extensibility | ⭐⭐⭐⭐⭐ | Add species = new YAML file |
+
 ### Strengths
 - **Taxonomic focus**: Deep specialization on *Coilia* genus — otolith microchemistry, migration ecology, genetics
 - **Triangle-powered**: All 8 scripts can pull data from fish-ecology KB and validate findings via cognitive-search-engine
@@ -237,6 +246,21 @@ S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
 ```
 
 > 🔥 Together infinite power, apart top expert engines.
+
+---
+
+## 📋 README Changelog
+
+| Version | Date | Theme | What Changed |
+|---------|------|-------|-------------|
+| v8.0 | 2026-06-20 | README Restoration | Restored archive, re-added badges, deep structure |
+| v7.0 | 2026-06-19 | Self-Assessment Overhaul | Star ratings, structured Strengths/Limitations/Roadmap |
+| v6.0 | 2026-06-18 | Ecosystem Map | Added full S-T-V-P₁-P₂ diagram, cross-project links |
+| v5.0 | 2026-06-17 | v1.4.0 Sync | Analysis scripts table, 144 tests, SpeciesRegistry docs |
+| v4.0 | 2026-06-14 | Philosophy Section | Three Tenets, Why This Matters comparison table |
+| v3.0 | 2026-06-10 | Architecture Deep-Dive | Internal architecture tree, S-T-V-P₁-P₂ role |
+| v2.0 | 2026-06-05 | Quick Start Enrichment | CLI examples, species-specific commands |
+| v1.0.0 | 2026-06-01 | Initial Draft | Project overview, basic structure, features table |
 
 ---
 
