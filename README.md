@@ -1,51 +1,72 @@
-﻿![Python 3.10+](https://img.shields.io/badge/Python%203.10%2B-3776AB?style=flat-square)
-  ![MIT](https://img.shields.io/badge/MIT-34D058?style=flat-square)
-  ![v1.4.0](https://img.shields.io/badge/v1.4.0-8A4FCE?style=flat-square)
-  ![4 species](https://img.shields.io/badge/4%20species-007EC6?style=flat-square)
-  ![8 scripts](https://img.shields.io/badge/8%20scripts-FE7D37?style=flat-square)
-  ![144 tests](https://img.shields.io/badge/144%20tests-D73A4A?style=flat-square)
-  ![ReAct](https://img.shields.io/badge/ReAct%20Loop-0EA5E9?style=flat-square)
-  ![Triangle](https://img.shields.io/badge/Triangle%20Powered-EC4899?style=flat-square)
-  ![Domain](https://img.shields.io/badge/Coilia%20Migration-F59E0B?style=flat-square)
-  ![CN-EN](https://img.shields.io/badge/CN-EN-6B7280?style=flat-square)
-  [![DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/fangtaocai041/coilia-agent)
+﻿<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║   🐟  COILIA AGENT  ·  P₂ Domain Expert  ·  v1.4.0          ║
+║  ─────────────────────────────────────────────────────────  ║
+║    Otolith Microchemistry · Migration Ecology · Stock Assmt  ║
+║        Tapertail Anchovy · Coilia nasus · 4 species          ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+<p align="center">
+  🇨🇳 <a href="README.zh.md">中文</a>  ·  🇬🇧 <a href="README.md">English</a>
 </p>
 
-[English](README.md) · [中文](README.zh.md)
+![Python 3.10+](https://img.shields.io/badge/Python%203.10%2B-3776AB?style=flat-square)
+![MIT](https://img.shields.io/badge/MIT-34D058?style=flat-square)
+![v1.4.0](https://img.shields.io/badge/v1.4.0-8A4FCE?style=flat-square)
+![4 species](https://img.shields.io/badge/4%20species-007EC6?style=flat-square)
+![8 scripts](https://img.shields.io/badge/8%20scripts-FE7D37?style=flat-square)
+![144 tests](https://img.shields.io/badge/144%20tests-D73A4A?style=flat-square)
+![ReAct](https://img.shields.io/badge/ReAct%20Loop-0EA5E9?style=flat-square)
+![Triangle](https://img.shields.io/badge/Triangle%20Powered-EC4899?style=flat-square)
+![Domain](https://img.shields.io/badge/Coilia%20Migration-F59E0B?style=flat-square)
+![CN-EN](https://img.shields.io/badge/CN-EN-6B7280?style=flat-square)
+[![DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/fangtaocai041/coilia-agent)
+
+<p align="center">
+  <a href="https://github.com/fangtaocai041/coilia-agent/stargazers"><img src="https://img.shields.io/github/stars/fangtaocai041/coilia-agent?style=social" alt="Stars"></a>
+  <a href="https://github.com/fangtaocai041/coilia-agent/network/members"><img src="https://img.shields.io/github/forks/fangtaocai041/coilia-agent?style=social" alt="Forks"></a>
+</p>
 
 <div align="center"><h3>🌊 Everything flows.</h3></div>
 
 The world is dynamic, knowledge is temporary, emergence is the norm.
 
----
-
-## 📖 Table of Contents
-
-- [Philosophy](#-philosophy)
-- [Quick Start](#-quick-start)
-- [Architecture](#-architecture)
-- [Features](#-features)
-- [Analysis Scripts](#-analysis-scripts)
-- [Project Structure](#-project-structure)
-- [Version History](#-version-history)
-- [Self-Assessment](#-self-assessment)
-- [Ecosystem](#-ecosystem)
+</div>
 
 ---
 
-## 🏛?Philosophy
+## 📑 Table of Contents
+
+- [🏛️ Philosophy](#-philosophy)
+- [🧩 What This Is](#-what-this-is)
+- [🚀 Quick Start](#-quick-start)
+- [🏗️ Architecture](#-architecture)
+- [✨ Features](#-features)
+- [📊 Analysis Scripts](#-analysis-scripts)
+- [📁 Project Structure](#-project-structure)
+- [📜 Version History](#-version-history)
+- [🪞 Self-Assessment](#-self-assessment)
+- [🔗 Ecosystem](#-ecosystem)
+- [📋 README Changelog](#-readme-changelog)
+
+---
+
+## 🏛️ Philosophy
 
 > Specialized knowledge, focused analysis. The river flows, and so do the fish.
 
-This project is a **Derived Domain Expert (P?** in the SanShengWanWu Triangle Core + Derived architecture, coordinated by **eon-core**. It inherits knowledge from S/V0 (fish-ecology-assistant) and verification from V/V1 (cognitive-search-engine), then specializes in *Coilia* genus research ?particularly the anadromous tapertail anchovy (*Coilia nasus*), one of the most economically and ecologically significant migratory fishes in the Yangtze River basin.
+This project is a **Derived Domain Expert (P₂)** in the SanShengWanWu Triangle Core + Derived architecture, coordinated by **eon-core**. It inherits knowledge from S/V0 (fish-ecology-assistant) and verification from V/V1 (cognitive-search-engine), then specializes in *Coilia* genus research — particularly the anadromous tapertail anchovy (*Coilia nasus*), one of the most economically and ecologically significant migratory fishes in the Yangtze River basin.
 
 ### 📜 Three Tenets
 
-**🌊 The River Flows** ?Fish migrate, populations fluctuate, fisheries collapse and recover. Knowledge of a species' ecology is never static. We track it dynamically.
+**🌊 The River Flows** — Fish migrate, populations fluctuate, fisheries collapse and recover. Knowledge of a species' ecology is never static. We track it dynamically.
 
-**🍂 Knowledge Drifts** ?Otolith microchemistry reveals new migration routes; genetic analysis uncovers cryptic species. Today's taxonomic consensus may shift with tomorrow's data.
+**🍂 Knowledge Drifts** — Otolith microchemistry reveals new migration routes; genetic analysis uncovers cryptic species. Today's taxonomic consensus may shift with tomorrow's data.
 
-**🌟 Emergence Patterns** ?When multiple analytical approaches (morphology + genetics + stable isotopes) converge on the same ecological insight, that's not coincidence ?it's emergence.
+**🌟 Emergence Patterns** — When multiple analytical approaches (morphology + genetics + stable isotopes) converge on the same ecological insight, that's not coincidence — it's emergence.
 
 ### ⚖ Why This Matters
 
@@ -56,7 +77,10 @@ This project is a **Derived Domain Expert (P?** in the SanShengWanWu Triangle Co
 | Stock status | Single-species MSY | Multi-species ecosystem approach |
 | Conservation | Generic recommendations | Species-specific, lifecycle-stage-aware |
 
-> 道生一，一生二，二生三，三生万物?
+> 道生一，一生二，二生三，三生万物。
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
 ## 🧩 What This Is
@@ -68,6 +92,8 @@ This project is a **Derived Domain Expert (P?** in the SanShengWanWu Triangle Co
 - **ReAct cognitive loop**: iterative Think→Act→Observe→Reflect for complex ecological analysis
 - **144 tests**: comprehensive validation of analysis pipelines and triangle integration
 - **--species CLI**: all scripts support `--species` argument for multi-species comparative analysis
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ---
 
@@ -89,37 +115,41 @@ python scripts/migration_analysis.py --species "Coilia nasus"
 python scripts/genetics_analysis.py --species "Coilia brachygnathus"
 ```
 
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
-## 🏗?Architecture
+## 🏗️ Architecture
 
 ### Triangle Core + Derived Role
 
 ```
 Triangle Core + Derived Architecture (coordinated by eon-core):
 
-  S/V0  fish-ecology-assistant    ?Knowledge Supply
-  V/V1  cognitive-search-engine   ?Search Verification
-  Coord  eon-core                  ?Coordination Hub
+  S/V0  fish-ecology-assistant    → Knowledge Supply
+  V/V1  cognitive-search-engine   → Search Verification
+  Coord  eon-core                  → Coordination Hub
 
-  P?   porpoise-agent            ?Porpoise Expert
-  P?   🐟 coilia-agent           ?Coilia Expert ?this project
-  P?   🐟 culter-agent           ?Culter Expert
-  C     🔥 conflict-arbiter       ?Conflict Arbitration
+  P₁   porpoise-agent            → Porpoise Expert
+  P₂   🐟 coilia-agent           → Coilia Expert — this project
+  P₃   🐟 culter-agent           → Culter Expert
+  C     🔥 conflict-arbiter       → Conflict Arbitration
 ```
 
 ### Internal Architecture
+
+<details open><summary><b>📂 Internal File Tree</b></summary>
 
 ```
 coilia-agent/
   src/
   ├── main.py                   CLI entry point
-  ├── adapter.py                IProjectAdapter ?triangle bridge
+  ├── adapter.py                IProjectAdapter — triangle bridge
   └── agent/
       ├── orchestrator.py       Task decomposition + pipeline routing
       ├── react_loop.py         Think→Act→Observe→Reflect cognitive loop
       ├── cognitive_analyzer.py Domain-specific analysis engine
-      └── species_registry.py   SpeciesRegistry ?4 Coilia spp YAML config
+      └── species_registry.py   SpeciesRegistry — 4 Coilia spp YAML config
   scripts/
   ├── migration_analysis.py     Otolith microchemistry + migration routes
   ├── genetics_analysis.py      Population genetics + eDNA methods
@@ -142,23 +172,33 @@ coilia-agent/
   └── conftest.py                 Shared test fixtures
 ```
 
+</details>
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
-## ?Features
+## ✨ Features
+
+<details open><summary><b>📋 Feature List</b></summary>
 
 | Feature | Status | Description |
 |---------|:------:|-------------|
-| 🔬 Domain Analysis | ?| 8 species-specific research pipeline scripts |
-| 📡 Triangle Powered | ?| V0 knowledge + V1 search + Coord orchestration |
-| 🧠 Cognitive Loop | ?| ReAct pattern for iterative ecological analysis |
-| 🗂?SpeciesRegistry | ?| 4 *Coilia* species (nasus/brachygnathus/mystus/grayii) YAML config |
-| 🏷?--species CLI | ?| All scripts support `--species` for multi-species analysis |
-| 🧬 Genetics Pipeline | ?| RAD-seq, microsatellite, SNP, eDNA analysis methods |
-| 🐟 Migration Analysis | ?| Otolith microchemistry (Sr:Ca ratios), migration route modeling |
-| 🍽?Feeding Ecology | ?| Stable isotope (δ¹³C, δ¹⁵N) + gut content analysis |
-| 📊 Stock Assessment | ?| CPUE standardization, length-frequency, growth models |
-| 🔄 Cross-Project | ?| Direct fish-ecology KB read/write via triangle bridge |
-| 🧪 Test Suite | ?| 144 tests covering 8 scripts + triangle integration |
+| 🔬 Domain Analysis | ✅ | 8 species-specific research pipeline scripts |
+| 📡 Triangle Powered | ✅ | V0 knowledge + V1 search + Coord orchestration |
+| 🧠 Cognitive Loop | ✅ | ReAct pattern for iterative ecological analysis |
+| 🗂️ SpeciesRegistry | ✅ | 4 *Coilia* species (nasus/brachygnathus/mystus/grayii) YAML config |
+| 🏷️ --species CLI | ✅ | All scripts support `--species` for multi-species analysis |
+| 🧬 Genetics Pipeline | ✅ | RAD-seq, microsatellite, SNP, eDNA analysis methods |
+| 🐟 Migration Analysis | ✅ | Otolith microchemistry (Sr:Ca ratios), migration route modeling |
+| 🍽️ Feeding Ecology | ✅ | Stable isotope (δ¹³C, δ¹⁵N) + gut content analysis |
+| 📊 Stock Assessment | ✅ | CPUE standardization, length-frequency, growth models |
+| 🔄 Cross-Project | ✅ | Direct fish-ecology KB read/write via triangle bridge |
+| 🧪 Test Suite | ✅ | 144 tests covering 8 scripts + triangle integration |
+
+</details>
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ---
 
@@ -174,6 +214,8 @@ coilia-agent/
 | `literature_search.py` | Literature Review | Multi-engine Coilia-specific search |
 | `species_kb.py` | Knowledge Management | Species profile CRUD, cross-project sync |
 | `fish_kb_add_species.py` | KB Expansion | Add new species to fish-ecology-assistant KB |
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ---
 
@@ -196,6 +238,8 @@ coilia-agent/
 | v1.1.0 | 2026-06-05 | Triangle core bridge (IProjectAdapter), orchestrator task routing |
 | v1.0.0 | 2026-06-01 | Initial coilia agent framework, literature search |
 
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
 ## 🪞 Self-Assessment
@@ -209,14 +253,14 @@ coilia-agent/
 | 🚀 Extensibility | ⭐⭐⭐⭐⭐| Add species = new YAML file |
 
 ### Strengths
-- **Taxonomic focus**: Deep specialization on *Coilia* genus ?otolith microchemistry, migration ecology, genetics
+- **Taxonomic focus**: Deep specialization on *Coilia* genus — otolith microchemistry, migration ecology, genetics
 - **Triangle-powered**: All 8 scripts can pull data from fish-ecology KB and validate findings via cognitive-search-engine
-- **SpeciesRegistry**: Extensible YAML design ?adding a 5th *Coilia* species requires only a new YAML file
+- **SpeciesRegistry**: Extensible YAML design — adding a 5th *Coilia* species requires only a new YAML file
 - **CLI consistency**: Every script supports the same `--species` interface for comparative analysis
 - **Cross-project integration**: Direct read/write to fish-ecology-assistant KB via adapter.py
 
 ### Current Limitations
-- Limited to 4 *Coilia* species (nasus, brachygnathus, mystus, grayii) ?other engraulids not covered
+- Limited to 4 *Coilia* species (nasus, brachygnathus, mystus, grayii) — other engraulids not covered
 - Genetics pipeline methods are scaffolded; actual RAD-seq/eDNA processing requires external tools
 - Otolith analysis assumes LA-ICP-MS data format; EPMA support pending
 - Single-agent architecture (no internal MAS like porpoise-agent)
@@ -227,26 +271,30 @@ coilia-agent/
 - [ ] Integrated population dynamics model (Stock Synthesis 3)
 - [ ] Multi-agent internal architecture for parallel analysis workflows
 
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
 ## 🔗 Ecosystem
 
-This project is the **Coilia Domain Expert (P?** in the SanShengWanWu ecosystem.
+This project is the **Coilia Domain Expert (P₂)** in the SanShengWanWu ecosystem.
 
 ```
 Triangle Core + Derived Architecture (coordinated by eon-core):
 
-  S/V0  📦 fish-ecology-assistant    ?Knowledge Supply
-  V/V1  🔍 cognitive-search-engine   ?Search Verification
-  Coord ⚙ eon-core                  ?Coordination Hub
+  S/V0  📦 fish-ecology-assistant    → Knowledge Supply
+  V/V1  🔍 cognitive-search-engine   → Search Verification
+  Coord ⚙ eon-core                  → Coordination Hub
 
-  P?   🐬 porpoise-agent           ?Porpoise Expert
-  P?   🐟 coilia-agent             ?Coilia Expert ?this project
-  P?   🐟 culter-agent             ?Culter Expert
-  C     🔥 conflict-arbiter         ?Conflict Arbitration
+  P₁   🐬 porpoise-agent           → Porpoise Expert
+  P₂   🐟 coilia-agent             → Coilia Expert — this project
+  P₃   🐟 culter-agent             → Culter Expert
+  C     🔥 conflict-arbiter         → Conflict Arbitration
 ```
 
 > 🔥 Together infinite power, apart top expert engines.
+
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ---
 
@@ -263,6 +311,8 @@ Triangle Core + Derived Architecture (coordinated by eon-core):
 | v2.0 | 2026-06-05 | Quick Start Enrichment | CLI examples, species-specific commands |
 | v1.0.0 | 2026-06-01 | Initial Draft | Project overview, basic structure, features table |
 
+<p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
+
 ---
 
 🌱 **Everything Flows · Panta Rhei**
@@ -271,6 +321,20 @@ Triangle Core + Derived Architecture (coordinated by eon-core):
 >
 > We say: You cannot analyze today's ecological data with last month's code.
 
-This project is not a fixed toolset ?it is a **living system**. Every component has built-in expiration mechanisms, version tracking, and emergence awareness. As your research deepens, packages update, and new methods emerge, it evolves with you.
+This project is not a fixed toolset — it is a **living system**. Every component has built-in expiration mechanisms, version tracking, and emergence awareness. As your research deepens, packages update, and new methods emerge, it evolves with you.
 
-*Last updated: 2026-06-18　|　Environment: Reasonix Code · DeepSeek Powered*
+*Last updated: 2026-06-18 | Environment: Reasonix Code · DeepSeek Powered*
+
+---
+
+<div align="center">
+
+### 🏷️ Tech & Topics
+
+`coilia` `otolith-microchemistry` `migration-ecology` `stock-assessment` `stable-isotopes` `genetics` `react-loop` `species-registry` `yangtze` `fisheries` `reasonix` `mcp`
+
+<br>
+
+<sub>🐟 Part of the **SanShengWanWu** ecosystem · P₂ Derived Domain Expert · Coordinated by [eon-core](https://github.com/fangtaocai041/eon-core)</sub>
+
+</div>

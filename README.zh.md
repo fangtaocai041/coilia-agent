@@ -1,12 +1,17 @@
-﻿<p align="center">
-  🇬🇧 <a href="README.md">English</a>
+﻿<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║   🐟  COILIA AGENT  ·  P₂ 刀鲚专研  ·  v1.4.0                ║
+║  ─────────────────────────────────────────────────────────  ║
+║    耳石微化学 · 洄游生态 · 资源评估 · 种群遗传学                ║
+║        刀鲚 · Coilia nasus · 4 种鲚属                          ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+<p align="center">
+  🇬🇧 <a href="README.md">English</a>  ·  🇨🇳 <a href="README.zh.md">中文</a>
 </p>
-
-# 🐟 Coilia Agent · 刀鲚专研 (P₂)
-
-> **物种**：*Coilia nasus*（刀鲚/tapertail anchovy）
-> **领域**：耳石微化学 · 洄游生态 · 资源评估
-> **角色**：P₂ — S-T-V-P₁-P₂-P₃-C 六体架构衍生项目
 
 [![Python 3.10+](https://img.shields.io/badge/Python%203.10%2B-3776AB?style=flat-square)]()
 [![v1.4.0](https://img.shields.io/badge/v1.4.0-8A4FCE?style=flat-square)]()
@@ -15,7 +20,30 @@
 [![ReAct](https://img.shields.io/badge/ReAct%20Loop-0EA5E9?style=flat-square)]()
 [![Triangle](https://img.shields.io/badge/Triangle%20Powered-EC4899?style=flat-square)]()
 
+<p align="center">
+  <a href="https://github.com/fangtaocai041/coilia-agent/stargazers"><img src="https://img.shields.io/github/stars/fangtaocai041/coilia-agent?style=social" alt="Stars"></a>
+  <a href="https://github.com/fangtaocai041/coilia-agent/network/members"><img src="https://img.shields.io/github/forks/fangtaocai041/coilia-agent?style=social" alt="Forks"></a>
+</p>
+
 <div align="center"><h3>🌊 万物皆流。</h3></div>
+
+</div>
+
+---
+
+## 📑 目录
+
+- [🧠 核心哲学](#-核心哲学)
+- [🧩 项目定位](#-项目定位)
+- [🔺 三角核心 + 衍生角色](#-三角核心--衍生角色)
+- [🚀 快速开始](#-快速开始)
+- [🏗️ 内部架构](#-内部架构)
+- [✨ 核心特性](#-核心特性)
+- [📊 分析脚本](#-分析脚本)
+- [📜 版本历史](#-版本历史)
+- [🪞 自我评价](#-自我评价)
+
+---
 
 ## 🧠 核心哲学
 
@@ -29,11 +57,15 @@
 
 **🌟 涌现是常态** — 当耳石微化学数据、捕捞日志、环境 DNA 三个独立来源指向同一洄游模式变化时，系统标记为涌现信号。
 
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
+
 ## 🧩 项目定位
 
 **Coilia Agent** 是三生万物生态体系中 P₂ 衍生项目。作为刀鲚领域的专属智能体，专精于耳石微化学分析（Sr/Ca）、洄游生态重建和资源评估。
 
 覆盖 4 种鲚属鱼类，8 个分析脚本，144 测试全覆盖。
+
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
 
 ## 🔺 三角核心 + 衍生角色
 
@@ -47,6 +79,8 @@
 | culter-agent | 衍生 P₃ | 鲌类专研 |
 | conflict-arbiter | 衍生 C | 冲突仲裁 |
 
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
+
 ## 🚀 快速开始
 
 ```bash
@@ -54,6 +88,8 @@ git clone https://github.com/fangtaocai041/coilia-agent.git
 cd coilia-agent
 pip install -e .
 ```
+
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
 
 ## 🏗️ 内部架构
 
@@ -64,7 +100,11 @@ pip install -e .
 | `stock/` | CPUE 资源评估 |
 | `scripts/` | 8 个可执行分析脚本 |
 
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
+
 ## ✨ 核心特性
+
+<details open><summary><b>📋 特性列表</b></summary>
 
 | 特性 | 状态 | 说明 |
 |------|:----:|------|
@@ -73,6 +113,10 @@ pip install -e .
 | 📊 资源评估 | ✅ | CPUE 标准化 + 种群动态模型 |
 | 🌐 多物种 | ✅ | 4 种鲚属（*C. nasus*、*C. mystus*、*C. grayii*、*C. brachygnathus*） |
 | 🧪 测试 | ✅ | 144 测试全覆盖 |
+
+</details>
+
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
 
 ## 📊 分析脚本
 
@@ -87,6 +131,8 @@ pip install -e .
 | `cross_validation.py` | 跨项目验证 |
 | `report_generator.py` | 报告生成 |
 
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
+
 ## 📜 版本历史
 
 | 版本 | 日期 | 主题 |
@@ -96,11 +142,15 @@ pip install -e .
 | **v1.2.0** | 2026-06-07 | 三角核心集成 + ReAct 循环 |
 | **v1.0.0** | 2026-06-05 | 初始发布 · 耳石微化学分析 |
 
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
+
 ## 🪞 自我评价
 
 **优势**：耳石微化学分析国内最早开源实现之一；4 物种并行分析；144 测试全通过。
 
 **局限**：依赖 LA-ICP-MS 实验数据（非实时）；洄游模型需现场验证数据校准。
+
+<p align="right"><a href="#-目录">↑ 返回目录</a></p>
 
 ---
 
@@ -118,3 +168,17 @@ pip install -e .
 这个项目不是一套固定的工具集——它是一个**活的系统**。
 
 *最后更新: 2026-06-18 | Reasonix Code · DeepSeek 驱动*
+
+---
+
+<div align="center">
+
+### 🏷️ 技术标签
+
+`刀鲚` `耳石微化学` `洄游生态` `资源评估` `稳定同位素` `遗传学` `ReAct循环` `物种注册` `长江` `渔业` `Reasonix` `MCP`
+
+<br>
+
+<sub>🐟 属于 **三生万物** 生态体系 · P₂ 衍生专研 · 由 [eon-core](https://github.com/fangtaocai041/eon-core) 统一协调</sub>
+
+</div>
