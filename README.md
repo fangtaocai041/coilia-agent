@@ -33,19 +33,19 @@ The world is dynamic, knowledge is temporary, emergence is the norm.
 
 ---
 
-## 🏛️ Philosophy
+## 🏛�?Philosophy
 
 > Specialized knowledge, focused analysis. The river flows, and so do the fish.
 
-This project is a **Derived Domain Expert (P₂)** in the SanShengWanWu S-T-V-P₁-P₂ five-body architecture, coordinated by **eon-core**. It inherits knowledge from S (fish-ecology-assistant) and verification from V (cognitive-search-engine), then specializes in *Coilia* genus research — particularly the anadromous tapertail anchovy (*Coilia nasus*), one of the most economically and ecologically significant migratory fishes in the Yangtze River basin.
+This project is a **Derived Domain Expert (P�?** in the SanShengWanWu Triangle Core + Derived architecture, coordinated by **eon-core**. It inherits knowledge from S/V0 (fish-ecology-assistant) and verification from V/V1 (cognitive-search-engine), then specializes in *Coilia* genus research �?particularly the anadromous tapertail anchovy (*Coilia nasus*), one of the most economically and ecologically significant migratory fishes in the Yangtze River basin.
 
 ### 📜 Three Tenets
 
-**🌊 The River Flows** — Fish migrate, populations fluctuate, fisheries collapse and recover. Knowledge of a species' ecology is never static. We track it dynamically.
+**🌊 The River Flows** �?Fish migrate, populations fluctuate, fisheries collapse and recover. Knowledge of a species' ecology is never static. We track it dynamically.
 
-**🍂 Knowledge Drifts** — Otolith microchemistry reveals new migration routes; genetic analysis uncovers cryptic species. Today's taxonomic consensus may shift with tomorrow's data.
+**🍂 Knowledge Drifts** �?Otolith microchemistry reveals new migration routes; genetic analysis uncovers cryptic species. Today's taxonomic consensus may shift with tomorrow's data.
 
-**🌟 Emergence Patterns** — When multiple analytical approaches (morphology + genetics + stable isotopes) converge on the same ecological insight, that's not coincidence — it's emergence.
+**🌟 Emergence Patterns** �?When multiple analytical approaches (morphology + genetics + stable isotopes) converge on the same ecological insight, that's not coincidence �?it's emergence.
 
 ### ⚖️ Why This Matters
 
@@ -56,8 +56,7 @@ This project is a **Derived Domain Expert (P₂)** in the SanShengWanWu S-T-V-P�
 | Stock status | Single-species MSY | Multi-species ecosystem approach |
 | Conservation | Generic recommendations | Species-specific, lifecycle-stage-aware |
 
-> 道生一，一生二，二生三，三生万物。
-
+> 道生一，一生二，二生三，三生万物�?
 ---
 
 ## 🧩 What This Is
@@ -92,19 +91,21 @@ python scripts/genetics_analysis.py --species "Coilia brachygnathus"
 
 ---
 
-## 🏗️ Architecture
+## 🏗�?Architecture
 
-### S-T-V-P₁-P₂ Role
+### Triangle Core + Derived Role
 
 ```
-S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
+Triangle Core + Derived Architecture (coordinated by eon-core):
 
-  S/V0  fish-ecology-assistant    → Knowledge Supply
-  V/V1  cognitive-search-engine   → Search Verification
-  Coord  eon-core                  → Coordination Hub
+  S/V0  fish-ecology-assistant    �?Knowledge Supply
+  V/V1  cognitive-search-engine   �?Search Verification
+  Coord  eon-core                  �?Coordination Hub
 
-  P₁    porpoise-agent            → Porpoise Expert
-  P₂    🐟 coilia-agent           → Coilia Expert ← this project
+  P�?   porpoise-agent            �?Porpoise Expert
+  P�?   🐟 coilia-agent           �?Coilia Expert �?this project
+  P�?   🐟 culter-agent           �?Culter Expert
+  C     🔥 conflict-arbiter       �?Conflict Arbitration
 ```
 
 ### Internal Architecture
@@ -113,12 +114,12 @@ S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
 coilia-agent/
   src/
   ├── main.py                   CLI entry point
-  ├── adapter.py                IProjectAdapter — triangle bridge
+  ├── adapter.py                IProjectAdapter �?triangle bridge
   └── agent/
       ├── orchestrator.py       Task decomposition + pipeline routing
       ├── react_loop.py         Think→Act→Observe→Reflect cognitive loop
       ├── cognitive_analyzer.py Domain-specific analysis engine
-      └── species_registry.py   SpeciesRegistry — 4 Coilia spp YAML config
+      └── species_registry.py   SpeciesRegistry �?4 Coilia spp YAML config
   scripts/
   ├── migration_analysis.py     Otolith microchemistry + migration routes
   ├── genetics_analysis.py      Population genetics + eDNA methods
@@ -143,21 +144,21 @@ coilia-agent/
 
 ---
 
-## ✨ Features
+## �?Features
 
 | Feature | Status | Description |
 |---------|:------:|-------------|
-| 🔬 Domain Analysis | ✅ | 8 species-specific research pipeline scripts |
-| 📡 Triangle Powered | ✅ | V0 knowledge + V1 search + Coord orchestration |
-| 🧠 Cognitive Loop | ✅ | ReAct pattern for iterative ecological analysis |
-| 🗂️ SpeciesRegistry | ✅ | 4 *Coilia* species (nasus/brachygnathus/mystus/grayii) YAML config |
-| 🏷️ --species CLI | ✅ | All scripts support `--species` for multi-species analysis |
-| 🧬 Genetics Pipeline | ✅ | RAD-seq, microsatellite, SNP, eDNA analysis methods |
-| 🐟 Migration Analysis | ✅ | Otolith microchemistry (Sr:Ca ratios), migration route modeling |
-| 🍽️ Feeding Ecology | ✅ | Stable isotope (δ¹³C, δ¹⁵N) + gut content analysis |
-| 📊 Stock Assessment | ✅ | CPUE standardization, length-frequency, growth models |
-| 🔄 Cross-Project | ✅ | Direct fish-ecology KB read/write via triangle bridge |
-| 🧪 Test Suite | ✅ | 144 tests covering 8 scripts + triangle integration |
+| 🔬 Domain Analysis | �?| 8 species-specific research pipeline scripts |
+| 📡 Triangle Powered | �?| V0 knowledge + V1 search + Coord orchestration |
+| 🧠 Cognitive Loop | �?| ReAct pattern for iterative ecological analysis |
+| 🗂�?SpeciesRegistry | �?| 4 *Coilia* species (nasus/brachygnathus/mystus/grayii) YAML config |
+| 🏷�?--species CLI | �?| All scripts support `--species` for multi-species analysis |
+| 🧬 Genetics Pipeline | �?| RAD-seq, microsatellite, SNP, eDNA analysis methods |
+| 🐟 Migration Analysis | �?| Otolith microchemistry (Sr:Ca ratios), migration route modeling |
+| 🍽�?Feeding Ecology | �?| Stable isotope (δ¹³C, δ¹⁵N) + gut content analysis |
+| 📊 Stock Assessment | �?| CPUE standardization, length-frequency, growth models |
+| 🔄 Cross-Project | �?| Direct fish-ecology KB read/write via triangle bridge |
+| 🧪 Test Suite | �?| 144 tests covering 8 scripts + triangle integration |
 
 ---
 
@@ -201,21 +202,21 @@ coilia-agent/
 
 | Dimension | Rating | Notes |
 |-----------|:-----:|-------|
-| 🔬 Domain Depth | ⭐⭐⭐⭐⭐ | 4 Coilia species with YAML profiles |
-| 📡 Triangle Integration | ⭐⭐⭐⭐⭐ | Direct fish-ecology KB read/write |
-| 🧠 Cognitive Architecture | ⭐⭐⭐⭐☆ | ReAct loop for iterative analysis |
-| 🧪 Test Coverage | ⭐⭐⭐⭐☆ | 144 tests across 8 scripts |
-| 🚀 Extensibility | ⭐⭐⭐⭐⭐ | Add species = new YAML file |
+| 🔬 Domain Depth | ⭐⭐⭐⭐�?| 4 Coilia species with YAML profiles |
+| 📡 Triangle Integration | ⭐⭐⭐⭐�?| Direct fish-ecology KB read/write |
+| 🧠 Cognitive Architecture | ⭐⭐⭐⭐�?| ReAct loop for iterative analysis |
+| 🧪 Test Coverage | ⭐⭐⭐⭐�?| 144 tests across 8 scripts |
+| 🚀 Extensibility | ⭐⭐⭐⭐�?| Add species = new YAML file |
 
 ### Strengths
-- **Taxonomic focus**: Deep specialization on *Coilia* genus — otolith microchemistry, migration ecology, genetics
+- **Taxonomic focus**: Deep specialization on *Coilia* genus �?otolith microchemistry, migration ecology, genetics
 - **Triangle-powered**: All 8 scripts can pull data from fish-ecology KB and validate findings via cognitive-search-engine
-- **SpeciesRegistry**: Extensible YAML design — adding a 5th *Coilia* species requires only a new YAML file
+- **SpeciesRegistry**: Extensible YAML design �?adding a 5th *Coilia* species requires only a new YAML file
 - **CLI consistency**: Every script supports the same `--species` interface for comparative analysis
 - **Cross-project integration**: Direct read/write to fish-ecology-assistant KB via adapter.py
 
 ### Current Limitations
-- Limited to 4 *Coilia* species (nasus, brachygnathus, mystus, grayii) — other engraulids not covered
+- Limited to 4 *Coilia* species (nasus, brachygnathus, mystus, grayii) �?other engraulids not covered
 - Genetics pipeline methods are scaffolded; actual RAD-seq/eDNA processing requires external tools
 - Otolith analysis assumes LA-ICP-MS data format; EPMA support pending
 - Single-agent architecture (no internal MAS like porpoise-agent)
@@ -230,19 +231,19 @@ coilia-agent/
 
 ## 🔗 Ecosystem
 
-This project is the **Coilia Domain Expert (P₂)** in the SanShengWanWu ecosystem.
+This project is the **Coilia Domain Expert (P�?** in the SanShengWanWu ecosystem.
 
 ```
-S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
+Triangle Core + Derived Architecture (coordinated by eon-core):
 
-  S/V0  📦 fish-ecology-assistant    → Knowledge Supply
-  V/V1  🔍 cognitive-search-engine   → Search Verification
-  Coord ⚙️ eon-core                  → Coordination Hub
+  S/V0  📦 fish-ecology-assistant    �?Knowledge Supply
+  V/V1  🔍 cognitive-search-engine   �?Search Verification
+  Coord ⚙️ eon-core                  �?Coordination Hub
 
-  P₁    🐬 porpoise-agent           → Porpoise Expert
-  P₂    🐟 coilia-agent             → Coilia Expert ← this project
-  P₃    🐟 culter-agent             → Culter Expert
-  C     🔥 conflict-arbiter         → Conflict Arbitration
+  P�?   🐬 porpoise-agent           �?Porpoise Expert
+  P�?   🐟 coilia-agent             �?Coilia Expert �?this project
+  P�?   🐟 culter-agent             �?Culter Expert
+  C     🔥 conflict-arbiter         �?Conflict Arbitration
 ```
 
 > 🔥 Together infinite power, apart top expert engines.
@@ -255,10 +256,10 @@ S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
 |---------|------|-------|-------------|
 | v8.0 | 2026-06-20 | README Restoration | Restored archive, re-added badges, deep structure |
 | v7.0 | 2026-06-19 | Self-Assessment Overhaul | Star ratings, structured Strengths/Limitations/Roadmap |
-| v6.0 | 2026-06-18 | Ecosystem Map | Added full S-T-V-P₁-P₂ diagram, cross-project links |
+| v6.0 | 2026-06-18 | Ecosystem Map | Added full Triangle Core + Derived diagram, cross-project links |
 | v5.0 | 2026-06-17 | v1.4.0 Sync | Analysis scripts table, 144 tests, SpeciesRegistry docs |
 | v4.0 | 2026-06-14 | Philosophy Section | Three Tenets, Why This Matters comparison table |
-| v3.0 | 2026-06-10 | Architecture Deep-Dive | Internal architecture tree, S-T-V-P₁-P₂ role |
+| v3.0 | 2026-06-10 | Architecture Deep-Dive | Internal architecture tree, Triangle Core + Derived role |
 | v2.0 | 2026-06-05 | Quick Start Enrichment | CLI examples, species-specific commands |
 | v1.0.0 | 2026-06-01 | Initial Draft | Project overview, basic structure, features table |
 
@@ -270,6 +271,6 @@ S-T-V-P₁-P₂ Architecture (coordinated by eon-core):
 >
 > We say: You cannot analyze today's ecological data with last month's code.
 
-This project is not a fixed toolset — it is a **living system**. Every component has built-in expiration mechanisms, version tracking, and emergence awareness. As your research deepens, packages update, and new methods emerge, it evolves with you.
+This project is not a fixed toolset �?it is a **living system**. Every component has built-in expiration mechanisms, version tracking, and emergence awareness. As your research deepens, packages update, and new methods emerge, it evolves with you.
 
-*Last updated: 2026-06-20　|　Environment: Reasonix Code · DeepSeek Powered*
+*Last updated: 2026-06-17　|　Environment: Reasonix Code · DeepSeek Powered*
