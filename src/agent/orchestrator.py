@@ -1,4 +1,4 @@
-﻿"""CoiliaAgent — P₂ 鲚属专研 · 领域分析引擎.
+"""CoiliaAgent — P₂ 鲚属专研 · 领域分析引擎.
 
 P₂ 不搜索。搜索由 cognitive-search-engine 统一执行 (Unified Search Protocol)。
 P₂ 做三件事:
