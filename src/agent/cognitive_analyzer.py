@@ -1,5 +1,10 @@
 """CognitiveAnalyzer — BDI-inspired domain analysis engine for coilia-agent.
 
+⚠️ DIVERGENT COPY: coilia-agent and culter-agent have independent copies of
+this module. Core BDI framework (CognitiveState/Belief/Desire/Intention/Reflection)
+is identical; species-specific methods (e.g. _extract_prior_knowledge) differ.
+TODO (Phase 3): extract BaseCognitiveAnalyzer into eon-core/src/shared/.
+
 Cross-pollination from porpoise-agent's cognitive architecture:
   - BDI state machine (Belief → Desire → Intention)
   - Self-reflection loop (analyze → reflect → improve)
