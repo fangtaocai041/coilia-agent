@@ -49,23 +49,65 @@ species:
     fishing_gear: "刀鱼网 (流刺网)、滚钩"
     culinary: "清蒸刀鱼为江南名菜"
 
-  # 近缘种
+  # 近缘种与分类混淆
   related_species:
     - name: "短颌鲚"
       scientific: "Coilia brachygnathus"
-      difference: "淡水定居型，上颌骨较短，长江流域优势种之一"
-      conservation: "无保护 status"
+      difference: "淡水定居型，上颌骨较短，终生不入海。历史上曾被视为C. nasus同物异名或亚种(C. nasus taihuensis)。mtDNA控制区序列支持独立物种地位(Tang 2007)。与刀鲚存在自然杂交(Sun et al. 2026, Mar Biotechnol)。长江中下游泛滥平原湖泊优势种。"
+      conservation: "无保护status"
+      key_papers: ["Tang WQ 2007 Biodiversity Science", "Sun Z et al. 2026 Mar Biotechnol (hybridization discovery)"]
     - name: "凤鲚"
       scientific: "Coilia mystus"
-      difference: "沿海分布为主，偶入长江口"
-      conservation: "无保护 status"
+      difference: "沿海-河口分布为主，偶入长江下游。体型较小，体色较浅。曾被记为C. ectenes的一部分。Yang et al.(2006)通过耳石Sr/Ca验证其与C. ectenes(刀鲚)的栖息地利用差异。"
+      conservation: "IUCN EN"
+      key_papers: ["Yang J et al. 2006 J Fish Biol (otolith Sr/Ca)", "He WP et al. 2011 (molecular ID of larvae)"]
+    - name: "太湖湖鲚"
+      scientific: "Coilia nasus taihuensis (生态型)"
+      difference: "刀鲚的淡水定居生态型(ecomorphotype)，终生生活在太湖等湖泊中，不进行江海洄游。比较蛋白质组学显示洄游型与定居型嗅觉上皮蛋白表达差异(Zheng et al. 2019)。Liu et al.(2025)在长江大湾洲段识别出不同生态形态型。"
+      conservation: "资源量相对稳定"
+      key_papers: ["Zheng L et al. 2019 J Oceanol Limnol", "Liu JH et al. 2025 Fishes (ecomorphotypes)"]
+
+  # 三鲚区分简明表
+  species_comparison_table:
+    - species: "刀鲚 Coilia nasus"
+      migration: "溯河洄游(anadromous)"
+      max_length: "41 cm"
+      upper_jaw: "长，超过鳃盖后缘"
+      sr_ca_pattern: "低→高→低 (淡水→海水→淡水)"
+      habitat: "长江干流+海洋"
+    - species: "短颌鲚 C. brachygnathus"
+      migration: "淡水定居(resident)"
+      max_length: "25 cm"
+      upper_jaw: "短，不超过鳃盖"
+      sr_ca_pattern: "持续低Sr/Ca (终生淡水)"
+      habitat: "长江中下游湖泊+干流"
+    - species: "凤鲚 C. mystus"
+      migration: "河口-近海(estuarine)"
+      max_length: "20 cm"
+      upper_jaw: "中等长度"
+      sr_ca_pattern: "中高Sr/Ca波动(河口-海水)"
+      habitat: "长江口+近海"
+
+  # 分类历史(理解学名变体至关重要)
+  taxonomic_note: >
+    Coilia nasus的分类历史复杂，涉及多次学名变更：
+    - C. ectenes (Jordan & Seale 1905) → 曾长期作为刀鲚学名使用
+    - C. nasus (Temminck & Schlegel 1846) → 当前公认学名
+    - C. brachygnathus → 曾为C. nasus同物异名，现恢复为独立种
+    - C. nasus taihuensis → 太湖定居生态型，分类地位存争议
+    文献检索时必须同时使用以上所有学名变体，否则会遗漏大量早期文献。
 
   # 资源变迁
   population_trend:
     historical_peak: "1973年长江刀鱼产量 3750t"
     recent_low: "2010年后年产量不足 100t，部分年份 < 50t"
-    fishing_ban_effect: "2021年禁捕后资源呈恢复迹象，但尚未系统评估"
-    note: "刀鲚资源量仅为历史峰值的 1-3%"
+    fishing_ban_effect: >
+      2021年禁捕后恢复显著:
+      - Wang et al.(2024): 长江口相对生物量B/B0从0.22(2020)→0.90(2023), 体长+40%, 体重+134%, F/M从2.65→0.06
+      - Chen et al.(2026): 刀鲚禁渔后早期恢复呈时空异质性, 环境因子(SST/盐度/径流)是关键驱动
+      - Luo et al.(2025): 鄱阳湖水道LBB评估显示资源正在恢复
+      - 但分子层面: 遗传多样性总体不高(Zhang et al. 2025/2026微卫星), ΔNe恢复待观察
+    note: "刀鲚为FFART框架中r-对策洄游种的'最快响应'验证物种——生物量恢复极快，但结构不对称(ΔS)和遗传不对称(ΔNe)仍存疑"
 
 # ══════════════════════════════════════════════════════════════
 # 关键研究主题
@@ -108,15 +150,69 @@ research_themes:
 # 关键研究团队与文献 (国内)
 # ══════════════════════════════════════════════════════════════
 key_research_groups:
-  - institution: "淡水渔业研究中心"
-    researchers: ["刘凯", "徐东坡", "施炜纲"]
-    focus: "刀鲚资源评估、洄游生态"
+  - institution: "淡水渔业研究中心·南京农业大学无锡渔业学院"
+    researchers: ["刘凯", "徐东坡", "施炜纲", "方弟安", "段金荣", "马凤娇", "应聪萍", "杨彦平", "郭弘艺", "唐文乔"]
+    focus: "刀鲚资源评估、洄游生态、分子生物学(基因组/转录组/蛋白组/肠道微生物)、产卵迁移生理"
+    key_papers:
+      - "Ma F et al. 2025 Ecol Evol — Two Ecotypes Population Genomics (刘凯通讯)"
+      - "Guo H et al. 2025 Biology — Spatial & Sex-Specific Growth Variations (刘凯通讯)"
+      - "Wei SW et al. 2024 Fishes — Ovarian Development during Breeding Migration (刘凯参与)"
+      - "Yang C et al. 2025 Microorganisms — Multi-Omics Gut Microbiota (刘凯参与)"
+      - "Ma F et al. 2022 Comp Biochem Physiol — Proteomics digestive response (刘凯通讯)"
+      - "Ying C et al. 2022 J Fish Biol — Anisakidae parasitism & liver fibrosis (刘凯通讯)"
+      - "Yin D et al. 2020 Genomics — Metabolic mechanisms during migration (刘凯通讯)"
+      - "Ying CP et al. 2020 Curr Microbiol — Gut microbiome spawning migration (刘凯通讯)"
+      - "Ma F et al. 2019 J Fish Biol — Digestive enzyme activity migration (刘凯通讯)"
+      - "Fang DA et al. 2017 Genes — HSP60/HSP10 testis development (刘凯参与)"
+      - "Duan JR et al. 2016 BMC Dev Biol — GnRH receptor spawning migration (刘凯参与)"
+      - "Wang M et al. 2016 Gene — LPL molecular cloning (刘凯参与)"
+      - "Fang DA et al. 2016 Genes — HSP90AA1 anadromous fish (刘凯参与)"
+      - "Duan JR et al. 2015 Mar Genomics — Ovary transcriptome spawning (刘凯参与)"
+      - "刘凯等 2009 动物学杂志 — 凤鲚刀鲚湖鲚肌肉生化成分"
+
+  - institution: "中国水产科学研究院淡水渔业研究中心·渔业微化学实验室"
+    researchers: ["杨健", "姜涛", "刘洪波", "陈修报"]
+    focus: "刀鲚/短颌鲚耳石微化学、Sr/Ca与87Sr/86Sr生活史重建、洄游模式多样性"
+    key_papers:
+      - "Song C et al. 2024 Fishes — Otolith Microchemistry Diversity of Migration Patterns (长江口)"
+      - "Hu YH et al. 2022 Fishes — Dayang River life history otolith microchemistry"
+      - "Xuan ZY et al. 2022 Reg Stud Mar Sci — Poyang Lake vs Estuary divergence (耳石+微卫星)"
+      - "Sokta L et al. 2020 Heliyon — Loss of habitats in freshwater lakes"
+      - "Jiang T et al. 2014 — Life History Variations Among Different Populations"
+      - "Jiang T et al. 2012 Environ Biol Fish — Yellow Sea life history Sr:Ca"
+      - "Jiang T et al. 2013 水产学报 — Two microchemistry patterns Poyang Lake"
+      - "Chen TT et al. 2016 湖泊科学 — Jingjiang section C. nasus vs C. brachygnathus otolith"
+      - "Li MM et al. 2017 生态学报 — Anqing section migration ecology"
+      - "Sun Z et al. 2026 Mar Biotechnol — Natural Hybridization C. nasus × C. brachygnathus"
+
   - institution: "中国水产科学研究院东海水产研究所"
-    researchers: ["庄平", "赵峰"]
-    focus: "刀鲚耳石微化学、洄游履历"
+    researchers: ["庄平", "赵峰", "宋超"]
+    focus: "刀鲚耳石微化学、长江口洄游、产卵场分布"
+    key_papers:
+      - "Song C et al. 2024 Fishes — Spawning Ground Distribution (长江口)"
+      - "Wang SY et al. 2024 Front Mar Sci — Recovery after fishing ban (长江口)"
+
   - institution: "上海海洋大学"
     researchers: ["唐文乔", "刘其根"]
-    focus: "刀鲚遗传学、群体结构"
+    focus: "刀鲚遗传学、群体结构、生态形态型识别"
+    key_papers:
+      - "Liu JH et al. 2025 Fishes — Different Ecomorphotypes Dawanzhou Section"
+      - "Zheng L et al. 2019 J Oceanol Limnol — Olfactory rosette proteomics anadromous vs resident"
+
   - institution: "中国科学院水生生物研究所"
     researchers: ["刘焕章", "陈毅峰"]
     focus: "长江鱼类多样性、刀鲚保护生物学"
+    key_papers:
+      - "Liu HZ 2026 Chin Sci Bull — Ten-year fishing ban and river ecosystem restoration"
+
+  - institution: "江西省水生生物保护救助中心"
+    researchers: ["王生", "罗玉兰"]
+    focus: "鄱阳湖刀鲚资源评估"
+    key_papers:
+      - "Luo YL et al. 2025 Front Mar Sci — LBB stock recovery Poyang Lake"
+
+  - institution: "上海海洋大学/东海所"
+    researchers: ["陈桂琴", "冯广朋"]
+    focus: "刀鲚禁渔后早期恢复·时空格局"
+    key_papers:
+      - "Chen GQ et al. 2026 Fishes — Early Recovery Responses Spatiotemporal Patterns"
