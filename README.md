@@ -194,6 +194,7 @@ coilia-agent/
 | 🍽️ Feeding Ecology | ✅ | Stable isotope (δ¹³C, δ¹⁵N) + gut content analysis |
 | 📊 Stock Assessment | ✅ | CPUE standardization, length-frequency, growth models |
 | 🔄 Cross-Project | ✅ | Direct fish-ecology KB read/write via triangle bridge |
+| 🌊 Emergence Sensing | ✅ | CoiliaReActLoop embedded EmergenceMonitor (D₁/D₂ tracking) |
 | 🧪 Test Suite | ✅ | 144 tests covering 8 scripts + triangle integration |
 
 </details>
