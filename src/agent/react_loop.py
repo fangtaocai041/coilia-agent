@@ -18,6 +18,21 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 from enum import Enum
 
+# ── Emergence Engine Integration ──
+_EMERGENCE_AVAILABLE = False
+_EmergenceMonitor = None
+_DimensionalLevel = None
+try:
+    _infra = str(Path(__file__).resolve().parent.parent.parent.parent / "infrastructure")
+    if _infra not in sys.path:
+        sys.path.insert(0, _infra)
+    from unified_emergence import EmergenceMonitor, DimensionalLevel
+    _EMERGENCE_AVAILABLE = True
+    _EmergenceMonitor = EmergenceMonitor
+    _DimensionalLevel = DimensionalLevel
+except ImportError:
+    pass
+
 logger = logging.getLogger(__name__)
 
 # ── Types ──
@@ -89,6 +104,17 @@ class CoiliaReActLoop:
         self.history: List[Dict] = []
         self._iteration = 0
 
+        # ── Emergence Monitor ──
+        self._emergence_monitor: Optional[Any] = None
+        if _EMERGENCE_AVAILABLE:
+            self._emergence_monitor = _EmergenceMonitor(
+                emergence_threshold_sigma=3.0,
+                min_sources=3,
+            )
+            logger.info("CoiliaReActLoop emergence monitor enabled")
+        else:
+            logger.info("CoiliaReActLoop emergence monitor unavailable")
+
     def run(self, question: str, use_llm: bool = False) -> Dict[str, Any]:
         """Execute full ReAct cycle for a research question."""
         result = {"question": question, "iterations": 0, "findings": [], "state": "started"}
@@ -119,6 +145,9 @@ class CoiliaReActLoop:
             self.state = ReActState.REFLECT
             refl = self._reflect(obs, question)
             self.history.append({"phase": "reflect", "output": refl})
+
+            # ── Emergence Recording ──
+            self._record_emergence_coilia(i, action, obs, refl)
 
             if refl.satisfied:
                 self.state = ReActState.DONE
@@ -156,6 +185,61 @@ class CoiliaReActLoop:
             query_params={"query": question, "use_example": True},
             reasoning="No specific theme matched; defaulting to literature search"
         )
+
+    # ── Emergence Integration ──
+
+    def _record_emergence_coilia(self, iteration: int, action: ActionResult,
+                                  obs: Observation, refl: Reflection) -> None:
+        """记录每次迭代执行指标到涌现引擎。"""
+        if not self._emergence_monitor or not _EMERGENCE_AVAILABLE:
+            return
+        try:
+            self._emergence_monitor.record(
+                "c2_react_step_success",
+                1.0 if action.success else 0.0,
+                _DimensionalLevel.D1,
+            )
+            self._emergence_monitor.record(
+                "c2_react_step_duration_ms",
+                float(action.elapsed_ms),
+                _DimensionalLevel.D1,
+            )
+            self._emergence_monitor.record(
+                "c2_react_confidence",
+                float(obs.confidence),
+                _DimensionalLevel.D2,
+            )
+            self._emergence_monitor.record(
+                "c2_react_satisfaction",
+                1.0 if refl.satisfied else 0.0,
+                _DimensionalLevel.D1,
+            )
+            if iteration > 0 and iteration % 2 == 0:
+                signals = self._emergence_monitor.check_emergence()
+                if signals:
+                    logger.warning(
+                        "Emergence at iteration %d: %d signal(s)",
+                        iteration, len(signals),
+                    )
+        except Exception:
+            pass
+
+    def get_emergence_health(self) -> dict:
+        if not self._emergence_monitor:
+            return {"status": "unavailable"}
+        try:
+            return self._emergence_monitor.health_report()
+        except Exception:
+            return {"status": "error"}
+
+    @property
+    def has_emergence(self) -> bool:
+        if not self._emergence_monitor:
+            return False
+        try:
+            return len(self._emergence_monitor.pending_signals) > 0
+        except Exception:
+            return False
 
     def _act(self, thought: ThoughtOutput) -> ActionResult:
         """Execute the selected analysis script."""

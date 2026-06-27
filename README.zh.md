@@ -113,6 +113,7 @@ pip install -e .
 | 📊 资源评估 | ✅ | CPUE 标准化 + 种群动态模型 |
 | 🌐 多物种 | ✅ | 4 种鲚属（*C. nasus*、*C. mystus*、*C. grayii*、*C. brachygnathus*） |
 | 🧪 测试 | ✅ | 144 测试全覆盖 |
+| 🌊 涌现代入 | ✅ | CoiliaReActLoop 内嵌 EmergenceMonitor (D₁/D₂ 维度追踪) |
 
 </details>
 
